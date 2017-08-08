@@ -125,7 +125,7 @@ const on_error = function (err) {
 };
 
 // import custom modules
-const init_module    = require("./gulp-tasks/init")(gulp, plugins);
+const init_module    = require("./gulp-tasks/init");
 const config_module  = require("./gulp-tasks/config");
 const styles_module  = require("./gulp-tasks/styles");
 const scripts_module = require("./gulp-tasks/scripts");
@@ -135,7 +135,9 @@ const upload_module  = require("./gulp-tasks/upload");
 const sync_module    = require("./gulp-tasks/sync");
 
 // configuration tasks
-gulp.task("init", init_module);
+gulp.task("init", () => {
+    return init_module.init(gulp, plugins, on_error);
+});
 gulp.task("config", () => {
     return config_module.config(gulp, plugins);
 });
