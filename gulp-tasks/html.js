@@ -1,6 +1,6 @@
 // JavaScript Document
 
-// Scripts written by YOURNAME @ YOURCOMPANY
+// Scripts written by @@author_name @ @@author_name
 
 module.exports = {
     html(gulp, plugins, ran_tasks, on_error) {

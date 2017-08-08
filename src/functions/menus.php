@@ -8,11 +8,11 @@ define("ENABLE_MEGA_MENU", true);
 
 // register the menus
 register_nav_menus(array(
-	"primary" => __("Navigation", "new_site"),
+	"primary" => __("Navigation", "@@namespace"),
 ));
 
 // menu walker
-class new_site_menu_walker extends Walker_Nav_Menu {
+class @@namespace_menu_walker extends Walker_Nav_Menu {
     // set up a variable to hold the parameters passed to the walker
     private $params;
 
@@ -137,7 +137,7 @@ class new_site_menu_walker extends Walker_Nav_Menu {
             if (in_array("-mega", $classes)) {
                 $this->is_mega = true;
 
-                $output .= "<button class='menu-list_toggle _visuallyhidden'>" . __("Click to toggle children", "new_site") . "</button>";
+                $output .= "<button class='menu-list_toggle _visuallyhidden'>" . __("Click to toggle children", "@@namespace") . "</button>";
                 $output .= "<div class='menu-list_container -mega' aria-hidden='true'>";
             }
         }
@@ -151,15 +151,15 @@ class new_site_menu_walker extends Walker_Nav_Menu {
         $toggle = "";
 
         if (in_array("accordion", $params) && !(ENABLE_MEGA_MENU && $this->is_mega) && !in_array("touch", $params) && !in_array("hover", $params)) {
-            $toggle .= "<button class='menu-list_toggle'><icon use='angle-down' /><span class='_visuallyhidden'>" . __("Toggle children", "new_site") . "</span></button>";
+            $toggle .= "<button class='menu-list_toggle'><icon use='angle-down' /><span class='_visuallyhidden'>" . __("Toggle children", "@@namespace") . "</span></button>";
         }
 
         if (in_array("touch", $params) && !(ENABLE_MEGA_MENU && $this->is_mega) && !in_array("accordion", $params)) {
-            $toggle .= "<button class='menu-list_toggle _touch'><icon use='angle-down' /><span class='_visuallyhidden'>" . __("Toggle children", "new_site") . "</span></button>";
+            $toggle .= "<button class='menu-list_toggle _touch'><icon use='angle-down' /><span class='_visuallyhidden'>" . __("Toggle children", "@@namespace") . "</span></button>";
         }
 
         if (in_array("hover", $params) && !(ENABLE_MEGA_MENU && $this->is_mega) && !in_array("accordion", $params)) {
-            $toggle .= "<button class='menu-list_toggle _visuallyhidden" . (in_array("touch", $params) ? " _mouse" : "") . "'>" . __("Toggle children", "new_site") . "</button>";
+            $toggle .= "<button class='menu-list_toggle _visuallyhidden" . (in_array("touch", $params) ? " _mouse" : "") . "'>" . __("Toggle children", "@@namespace") . "</button>";
         }
 
         // set up empty variant class
@@ -231,7 +231,7 @@ if (ENABLE_MEGA_MENU && is_admin()) {
     // require nav-menu.php so we can hook Walker_Nav_Menu_Edit
     require_once ABSPATH . "wp-admin/includes/nav-menu.php";
 
-    class new_site_mega_menu_column_checkbox_setup extends Walker_Nav_Menu_Edit {
+    class @@namespace_mega_menu_column_checkbox_setup extends Walker_Nav_Menu_Edit {
         static $field = array("name" => "column");
 
         // add a new checkbox to each menu item
@@ -246,7 +246,7 @@ if (ENABLE_MEGA_MENU && is_admin()) {
 
             $new_field = "<p class='field-" . self::$field["name"] . " description'><label for='edit-menu-item-" . self::$field["name"] . "-{$item->ID}'>";
             $new_field .= "<input type='checkbox' id='edit-menu-item-" . self::$field["name"] . "-{$item->ID}' class='widefat code edit-menu-item-" . self::$field["name"] . "' name='menu-item-" . self::$field["name"] . "[{$item->ID}]'" . self::$field["checked"] . " />";
-            $new_field .= __("Start new column here", "new_site");
+            $new_field .= __("Start new column here", "@@namespace");
             $new_field .= "</label></p>";
 
             $output .= preg_replace("/(?=<p[^>]+class=\"[^\"]*field-css-classes)/", $new_field, $item_output);
@@ -270,20 +270,20 @@ if (ENABLE_MEGA_MENU && is_admin()) {
             add_action("save_post", array(__CLASS__, "_save_post"));
         }
     }
-    add_action("init", array("new_site_mega_menu_column_checkbox_setup", "setup"));
+    add_action("init", array("@@namespace_mega_menu_column_checkbox_setup", "setup"));
     add_filter("wp_edit_nav_menu_walker", function () {
-        return "new_site_mega_menu_column_checkbox_setup";
+        return "@@namespace_mega_menu_column_checkbox_setup";
     });
 
     // hide the checkbox except on depth 1
-    function new_site_hide_column_checkbox_except_on_depth_1() {
+    function @@namespace_hide_column_checkbox_except_on_depth_1() {
         $current_screen = get_current_screen();
 
         if ($current_screen->base === "nav-menus") {
             echo "<style>.menu-item:not(.menu-item-depth-1) .field-column, .menu-item.menu-item-depth-0 + .menu-item.menu-item-depth-1 .field-column {display:none;}</style>";
         }
     }
-    add_action("admin_head", "new_site_hide_column_checkbox_except_on_depth_1");
+    add_action("admin_head", "@@namespace_hide_column_checkbox_except_on_depth_1");
 }
 
 // add sub_menu options to wp_nav_menu
@@ -291,7 +291,7 @@ if (ENABLE_MEGA_MENU && is_admin()) {
 // @param  {Boolean}  show_parent - Set to false to hide the parent menu item, thus only showing siblings
 // @param  {Boolean}  direct_parent - Set to true to show the direct parent of the currently viewed page, instea of the top level ancestor
 // @param  {Number}   parent_id - Set to a Post ID or Menu Item ID to use as the parent
-function new_site_nav_menu_sub_menu($menu_items, $args) {
+function @@namespace_nav_menu_sub_menu($menu_items, $args) {
     $root_id = 0;
     $menu_item_parents = array();
 
@@ -391,4 +391,4 @@ function new_site_nav_menu_sub_menu($menu_items, $args) {
 
     return $menu_items;
 }
-add_filter("wp_nav_menu_objects", "new_site_nav_menu_sub_menu", 10, 2);
+add_filter("wp_nav_menu_objects", "@@namespace_nav_menu_sub_menu", 10, 2);

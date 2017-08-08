@@ -56,7 +56,7 @@
                     <?php if ($comments): ?>
                         <li class="menu-list_item">
                             <a class="menu-list_link link" href="#comments">
-                                <icon use="comment" /> <?php echo $comments; ?> <?php _e("Comments", "new_site"); ?>
+                                <icon use="comment" /> <?php echo $comments; ?> <?php _e("Comments", "@@namespace"); ?>
                             </a><!--/.menu-list_link.link-->
                         </li><!--/.menu-list_item-->
                     <?php endif; ?>
@@ -69,7 +69,7 @@
 
     <div class="article_content">
         <div class="article_user-content user-content">
-            <p class="article_text text"><?php echo get_better_excerpt($post->ID, 55, "&hellip; <a class='article_link link' href='" . get_permalink() . "'>" . __("Read More", "new_site") . "</a>"); ?></p>
+            <p class="article_text text"><?php echo get_better_excerpt($post->ID, 55, "&hellip; <a class='article_link link' href='" . get_permalink() . "'>" . __("Read More", "@@namespace") . "</a>"); ?></p>
         </div><!--/.article_user-content.user-content-->
     </div><!--/.article_content-->
 

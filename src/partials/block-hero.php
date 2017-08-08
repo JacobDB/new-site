@@ -2,11 +2,11 @@
 $i = 0;
 $slideshow = get_field("slideshow");
 $featured_image = get_the_post_thumbnail($post->ID, "hero", array("class" => "swiper-image"));
-$title = is_singular() ? get_the_title() : (is_archive() ? get_the_archive_title() : (is_404() ? __("404: Page Not Found", "new_site") : false));
+$title = is_singular() ? get_the_title() : (is_archive() ? get_the_archive_title() : (is_404() ? __("404: Page Not Found", "@@namespace") : false));
 
 if (is_home() && !$title) {
     $posts_page = get_post(get_option("page_for_posts"));
-    $title = get_the_title($posts_page->ID) ? get_the_title($posts_page->ID) : __("Latest Posts", "new_site");
+    $title = get_the_title($posts_page->ID) ? get_the_title($posts_page->ID) : __("Latest Posts", "@@namespace");
 }
 ?>
 <?php if ($slideshow || $featured_image): ?>
@@ -111,8 +111,8 @@ if (is_home() && !$title) {
 
             <?php if ($slideshow && $i > 1): ?>
             <div class="swiper-pagination"></div>
-            <button class="swiper-button -prev"><icon use="caret-left" class="swiper-button-icon" /><span class="_visuallyhidden"><?php _e("Previous Slide", "new_site"); ?></span></button>
-            <button class="swiper-button -next"><icon use="caret-right" class="swiper-button-icon" /><span class="_visuallyhidden"><?php _e("Next Slide", "new_site"); ?></span></button>
+            <button class="swiper-button -prev"><icon use="caret-left" class="swiper-button-icon" /><span class="_visuallyhidden"><?php _e("Previous Slide", "@@namespace"); ?></span></button>
+            <button class="swiper-button -next"><icon use="caret-right" class="swiper-button-icon" /><span class="_visuallyhidden"><?php _e("Next Slide", "@@namespace"); ?></span></button>
             <?php endif; ?>
 
         </div><!--/.hero_swiper-container.swiper-container.-fullbleed-->

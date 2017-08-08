@@ -1,5 +1,5 @@
 {
-  "name": "@@name",
+  "name": "@@npm_name",
   "version": "0.0.1",
   "description": "A brand new WordPress theme built just for @@name!",
   "homepage": "@@homepage",

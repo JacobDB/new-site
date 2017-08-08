@@ -4,14 +4,14 @@
 \* ------------------------------------------------------------------------ */
 
 // add row shortcode
-function new_site_row_shortcode($atts, $content = null) {
+function @@namespace_row_shortcode($atts, $content = null) {
     // return the tab wrapper with the menu
-    return "<div class='user-content_row row -padded'>" . do_shortcode(new_site_fix_shortcodes($content)) . "</div>";
+    return "<div class='user-content_row row -padded'>" . do_shortcode(@@namespace_fix_shortcodes($content)) . "</div>";
 }
-add_shortcode("row", "new_site_row_shortcode");
+add_shortcode("row", "@@namespace_row_shortcode");
 
 // add col shortcode
-function new_site_col_shortcode($atts , $content = null) {
+function @@namespace_col_shortcode($atts , $content = null) {
     extract(shortcode_atts(
 		array(
 			"default_width"  => "",
@@ -29,6 +29,6 @@ function new_site_col_shortcode($atts , $content = null) {
     $class .= $variant ? " $variant" : "";
 
     // return the tab wrapper with the menu
-    return "<div class='col{$class}'>" . do_shortcode(new_site_fix_shortcodes($content)) . "</div>";
+    return "<div class='col{$class}'>" . do_shortcode(@@namespace_fix_shortcodes($content)) . "</div>";
 }
-add_shortcode("col", "new_site_col_shortcode");
+add_shortcode("col", "@@namespace_col_shortcode");
