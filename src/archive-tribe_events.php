@@ -3,7 +3,7 @@
 <div class="content-block">
     <div class="content_inner">
         <div class="content_post">
-            <?php do_action("@@namespace_before_content"); ?>
+            <?php do_action("@@init_namespace_before_content"); ?>
 
             <?php
             if (have_posts()) {
@@ -14,7 +14,7 @@
             }
             ?>
 
-            <?php do_action("@@namespace_after_content"); ?>
+            <?php do_action("@@init_namespace_after_content"); ?>
         </div><!--/.content_post-->
     </div><!--/.content_inner-->
 </div><!--/.content-block-->

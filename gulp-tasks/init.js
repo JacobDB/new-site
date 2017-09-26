@@ -1,6 +1,6 @@
 // JavaScript Document
 
-// Scripts written by @@author_name @ @@author_company
+// Scripts written by @@init_author_name @ @@init_author_company
 
 module.exports = {
     init(gulp, plugins, on_error) {
@@ -48,6 +48,11 @@ module.exports = {
                         message: "Author URL",
                         type:    "input",
                     },
+                    {
+                        name: "theme_color",
+                        message: "Theme Color",
+                        type:    "input",
+                    },
                 ], (res) => {
                     // store the project data
                     project_data = res;
@@ -81,15 +86,16 @@ module.exports = {
                     prefix:   "@@",
                     basepath: "@file",
                     context: {
-                        name:           project_data.name,
-                        npm_name:       project_data.name.toLowerCase().replace(/[^A-Za-z ]/, "").replace(/ /g, "-"),
-                        namespace:      project_data.name.toLowerCase().replace(/[^A-Za-z ]/, "").replace(/ /g, "_"),
-                        homepage:       project_data.homepage,
-                        repository:     project_data.repository.replace(/(\.git$)|(\/$)/, ""),
-                        author_name:    project_data.author_name,
-                        author_company: project_data.author_company,
-                        author_email:   project_data.author_email,
-                        author_url:     project_data.author_url,
+                        init_name:           project_data.name,
+                        init_npm_name:       project_data.name.toLowerCase().replace(/[^A-Za-z ]/, "").replace(/ /g, "-"),
+                        init_namespace:      project_data.name.toLowerCase().replace(/[^A-Za-z ]/, "").replace(/ /g, "_"),
+                        init_homepage:       project_data.homepage,
+                        init_repository:     project_data.repository.replace(/(\.git$)|(\/$)/, ""),
+                        init_author_name:    project_data.author_name,
+                        init_author_company: project_data.author_company,
+                        init_author_email:   project_data.author_email,
+                        init_author_url:     project_data.author_url,
+                        init_theme_color:    project_data.theme_color,
                     }
                 }))
                 // write the file

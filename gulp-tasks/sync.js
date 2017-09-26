@@ -1,6 +1,6 @@
 // JavaScript Document
 
-// Scripts written by @@author_name @ @@author_company
+// Scripts written by @@init_author_name @ @@init_author_company
 
 module.exports = {
     // sync task, set up a browser_sync server, depends on config

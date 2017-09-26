@@ -64,7 +64,7 @@ $post_content    = isset($post_content) ? $post_content : (isset($post) ? $post-
                     <?php if ($comments): ?>
                         <li class="menu-list_item">
                             <a class="menu-list_link link" href="#comments">
-                                <icon use="comment" /> <?php echo $comments; ?> <?php _e("Comments", "@@namespace"); ?>
+                                <icon use="comment" /> <?php echo $comments; ?> <?php _e("Comments", "@@init_namespace"); ?>
                             </a><!--/.menu-list_link.link-->
                         </li><!--/.menu-list_item-->
                     <?php endif; ?>
