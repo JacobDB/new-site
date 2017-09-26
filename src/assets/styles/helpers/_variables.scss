@@ -4,59 +4,59 @@
  * Colors
 \* ------------------------------------------------------------------------ */
 
-$primary: #17AAEC;
-$primary_alt: #57CAFF;
+$primary: @@init_primary_color;
+$primary_alt: @@init_primary_alt_color;
 
-$secondary: #BA3626;
-$secondary_alt: #FF9486;
+$secondary: @@init_secondary_color;
+$secondary_alt: @@init_secondary_alt_color;
 
-$tertiary: #84B2AA;
-$tertiary_alt: #CDFBF3;
+$tertiary: @@init_tertiary_color;
+$tertiary_alt: @@init_tertiary_alt_color;
 
-$quaternary: #ECBF4F;
-$quaternary_alt: #A17300;
+$quaternary: @@init_quaternary_color;
+$quaternary_alt: @@init_quaternary_alt_color;
 
-$quinary: #966790;
-$quinary_alt: #7D5678;
+$quinary: @@init_quinary_color;
+$quinary_alt: @@init_quinary_alt_color;
 
-$senary: #D2732A;
-$senary_alt: #B86425;
+$senary: @@init_senary_alt_color;
+$senary_alt: @@init_senary_alt_color;
 
-$accent: #17AAEC;
-$accent_alt: #57CAFF;
+$accent: @@init_accent_color;
+$accent_alt: @@init_accent_alt_color;
 
-$light: #FFFFFF;
-$light_alt: #EEEEEE;
+$light: @@init_light_color;
+$light_alt: @@init_light_alt_color;
 
-$dark: #000000;
-$dark_alt: #111111;
+$dark: @@init_dark_color;
+$dark_alt: @@init_dark_alt_color;
 
-$foreground: #111111;
-$foreground_alt: #000000;
+$foreground: @@init_foreground_color;
+$foreground_alt: @@init_foreground_alt_color;
 
-$background: #FFFFFF;
-$background_alt: #EEEEEE;
+$background: @@init_background_color;
+$background_alt: @@init_background_alt_color;
 
-$page_background: #EEEEEE;
-$page_background_alt: #FFFFFF;
+$page_background: @@init_page_background_color;
+$page_background_alt: @@init_page_background_alt_color;
 
-$warning: #9F0000;
-$warning_alt: #F83636;
+$warning: @@init_warning_color;
+$warning_alt: @@init_warning_alt_color;
 
 /* ------------------------------------------------------------------------ *\
  * Fonts                                                                    *
 \* ------------------------------------------------------------------------ */
 
-$heading-font: "Open Sans", "Arial", "Helvetica", sans-serif;
-$body-font: "Open Sans", "Arial", "Helvetica", sans-serif;
+$heading-font: @@init_heading_font;
+$body-font: @@init_body_font;
 
 /* ------------------------------------------------------------------------ *\
  * Widths                                                                   *
 \* ------------------------------------------------------------------------ */
 
-$site-width: 1500;
-$column-gap: 30;
-$content-padding: 50;
+$site-width: @@init_site_width;
+$column-gap: @@init_column_gap;
+$content-padding: @@init_content_padding;
 
 /* ------------------------------------------------------------------------ *\
  * Break Points                                                             *
