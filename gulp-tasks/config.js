@@ -1,6 +1,6 @@
 // JavaScript Document
 
-// Scripts written by @@author_name @ @@author_name
+// Scripts written by @@author_name @ @@author_company
 
 module.exports = {
     // config task, generate configuration file for uploads & BrowserSync and prompt dev for input

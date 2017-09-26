@@ -1,6 +1,6 @@
 // JavaScript Document
 
-// Scripts written by @@author_name @ @@author_name
+// Scripts written by @@author_name @ @@author_company
 
 ((global) => {
     // disable the service worker for post previews
