@@ -1,14 +1,14 @@
 // JavaScript Document
 
-// Scripts written by YOURNAME @ YOURCOMPANY
+// Scripts written by @@author_name @ @@author_company
 
 module.exports = {
     html(gulp, plugins, ran_tasks, on_error) {
         // read data from package.json
         const name            = plugins.json.readFileSync("./package.json").name;
-        const pwa_name        = plugins.json.readFileSync("./package.json")["progressive-web-app"].name;
-        const pwa_short_name  = plugins.json.readFileSync("./package.json")["progressive-web-app"].short_name;
-        const pwa_theme_color = plugins.json.readFileSync("./package.json")["progressive-web-app"].theme_color;
+        const pwa_name        = plugins.json.readFileSync("./package.json")["progressiveWebApp"].name;
+        const pwa_short_name  = plugins.json.readFileSync("./package.json")["progressiveWebApp"].short_name;
+        const pwa_theme_color = plugins.json.readFileSync("./package.json")["progressiveWebApp"].theme_color;
         const description     = plugins.json.readFileSync("./package.json").description;
         const version         = plugins.json.readFileSync("./package.json").version;
         const repository      = plugins.json.readFileSync("./package.json").repository;
