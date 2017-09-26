@@ -2,7 +2,7 @@
 /* ------------------------------------------------------------------------ *\
  * Functions: Post Types
 \* ------------------------------------------------------------------------ */
-/*removeIf(resources_css_js_php)*/
+
 // register project post type
 function @@init_namespace_create_resource_post_type() {
     register_post_type("resource", array(
@@ -72,4 +72,4 @@ function @@init_namespace_create_resource_post_type() {
 		)
 	);
 }
-add_action("init", "@@init_namespace_create_resource_post_type");/*endRemoveIf(resources_css_js_php)*/
+add_action("init", "@@init_namespace_create_resource_post_type");

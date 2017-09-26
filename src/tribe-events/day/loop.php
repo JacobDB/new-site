@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 global $post, $wp_query;
 $current_timeslot = null;
 ?>
@@ -28,4 +28,4 @@ $current_timeslot = null;
     	<?php endwhile; ?>
 
     </div><!--/.tribe-events-day-time-slot-->
-</div><!--/.tribe-events-loop--><!--endRemoveIf(tribe_html)-->
+</div><!--/.tribe-events-loop-->

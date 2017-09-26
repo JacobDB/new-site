@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 $filters = tribe_events_get_filters();
 $views   = tribe_events_get_views();
 $current_url = tribe_events_get_current_filter_url();
@@ -46,4 +46,4 @@ $current_url = tribe_events_get_current_filter_url();
 	<?php endif; // if (!empty($filters)) ?>
 
 </form><!--/.tribe-events-bar-->
-<?php do_action("tribe_events_bar_after_template"); ?><!--endRemoveIf(tribe_html)-->
+<?php do_action("tribe_events_bar_after_template"); ?>

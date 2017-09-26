@@ -17,7 +17,7 @@
     }
 }
 
-/*removeIf(tribe_css_js_php)*//* eventexcerpt variant */
+/* eventexcerpt variant */
 
 .article.-eventexcerpt {
     &:not(:last-of-type) {
@@ -40,7 +40,7 @@
     .article_header > .article_title:not(:last-child) + * {
         margin-bottom: remify(10, 16);
     }
-}/*endRemoveIf(tribe_css_js_php)*/
+}
 
 /* excerpt variant */
 

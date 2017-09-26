@@ -139,7 +139,7 @@ function @@init_namespace_dequeue_nf_display() {
     wp_dequeue_style("nf-display");
 }
 add_action("ninja_forms_enqueue_scripts", "@@init_namespace_dequeue_nf_display", 999);
-/*removeIf(tribe_css_js_php)*/
+
 // force redirect 'cause tribe is stupid
 function new_site_tribe_redirect($template) {
     if (is_post_type_archive("tribe_events")) {
@@ -179,7 +179,7 @@ add_filter("tribe_events_the_previous_month_link", "@@init_namespace_tribe_the_n
 add_filter("tribe_events_the_next_month_link", "@@init_namespace_tribe_the_nav_link", 10, 1);
 add_filter("tribe_the_prev_event_link", "@@init_namespace_tribe_the_nav_link", 10, 1);
 add_filter("tribe_the_next_event_link", "@@init_namespace_tribe_the_nav_link", 10, 1);
-add_filter("tribe_the_day_link", "@@init_namespace_tribe_the_nav_link", 10, 1);/*endRemoveIf(tribe_css_js_php)*/
+add_filter("tribe_the_day_link", "@@init_namespace_tribe_the_nav_link", 10, 1);
 
 // enable lazy loading on images
 function @@init_namespace_lazy_load_images($content) {

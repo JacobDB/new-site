@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 $day = tribe_events_get_current_month_day();
 $events_label = (1 === $day["total_events"]) ? tribe_get_event_label_singular() : tribe_get_event_label_plural();
 ?>
@@ -40,4 +40,4 @@ $events_label = (1 === $day["total_events"]) ? tribe_get_event_label_singular() 
 		?>
 		<a class="tribe-events-calendar_link link" href="<?php echo esc_url($day["view_more"]); ?>"><?php echo $view_all_label; ?> &raquo;</a>
 	</div>
-<?php endif; ?><!--endRemoveIf(tribe_html)-->
+<?php endif; ?>

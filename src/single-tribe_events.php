@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php get_header(); ?>
+<?php get_header(); ?>
 <?php include(locate_template("partials/block-hero.php")); ?>
 <div class="content-block">
     <div class="content_inner">
@@ -18,4 +18,4 @@
         </div><!--/.content_post-->
     </div><!--/.content_inner-->
 </div><!--/.content-block-->
-<?php get_footer(); ?><!--endRemoveIf(tribe_html)-->
+<?php get_footer(); ?>

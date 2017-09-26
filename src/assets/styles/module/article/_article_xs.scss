@@ -4,7 +4,7 @@
  * Article
 \* ------------------------------------------------------------------------ */
 
-/*removeIf(tribe_css_js_php)*//* eventexcerpt variant */
+/* eventexcerpt variant */
 
 .article.-eventexcerpt {
     &:not(:last-of-type) {
@@ -14,4 +14,4 @@
     .article_figure {
         margin-bottom: 0;
     }
-}/*endRemoveIf(tribe_css_js_php)*/
+}

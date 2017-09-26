@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 $organizer_ids = tribe_get_organizer_ids();
 $multiple      = count($organizer_ids) > 1;
 
@@ -50,4 +50,4 @@ $website = tribe_get_organizer_website_link();
 
 		<?php do_action("tribe_events_single_meta_organizer_section_end"); ?>
 	</ul><!--/.article_text.text.-list-->
-</div><!--endRemoveIf(tribe_html)-->
+</div>

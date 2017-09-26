@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 $phone   = tribe_get_phone();
 $website = tribe_get_venue_website_link();
 ?>
@@ -42,4 +42,4 @@ $website = tribe_get_venue_website_link();
 
 		<?php do_action("tribe_events_single_meta_venue_section_end"); ?>
 	</ul><!--/.article_text.text.-list-->
-</div><!--endRemoveIf(tribe_html)-->
+</div>

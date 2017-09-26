@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 $time_format          = get_option("time_format", Tribe__Date_Utils::TIMEFORMAT);
 $time_range_separator = tribe_get_option("timeRangeSeparator", " - ");
 
@@ -113,4 +113,4 @@ $website    = tribe_get_event_website_link();
 
 		<?php do_action("tribe_events_single_meta_details_section_end"); ?>
 	</ul>
-</div><!--endRemoveIf(tribe_html)-->
+</div>

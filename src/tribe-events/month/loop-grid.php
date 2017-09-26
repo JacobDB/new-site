@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 $days_of_week = tribe_events_get_days_of_week();
 $week = 0;
 global $wp_locale;
@@ -35,4 +35,4 @@ global $wp_locale;
 		</tbody><!--/.tribe-events-calendar_body-->
 	</table><!--/.tribe-events-calendar-->
 </div><!--/.tribe-events-calendar_container-->
-<?php do_action("tribe_events_after_the_grid"); ?><!--endRemoveIf(tribe_html)-->
+<?php do_action("tribe_events_after_the_grid"); ?>

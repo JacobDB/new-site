@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php do_action("tribe_events_single_meta_before"); ?>
+<?php do_action("tribe_events_single_meta_before"); ?>
 
 <?php do_action("tribe_events_single_event_meta_primary_section_start"); ?>
 
@@ -53,4 +53,4 @@ $tablet_columns = !$set_venue_apart && tribe_embed_google_map() ? "4" : "6";
 
 <?php endif; // ($set_venue_apart && tribe_has_venue()) ?>
 
-<?php do_action("tribe_events_single_meta_after"); ?><!--endRemoveIf(tribe_html)-->
+<?php do_action("tribe_events_single_meta_after"); ?>

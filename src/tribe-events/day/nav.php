@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><h3 class="_visuallyhidden" tabindex="0"><?php esc_html_e("Day Navigation", "the-events-calendar"); ?></h3>
+<h3 class="_visuallyhidden" tabindex="0"><?php esc_html_e("Day Navigation", "the-events-calendar"); ?></h3>
 
 <nav class="content_menu-list_container menu-list_container">
     <ul class="tribe-events-sub-nav menu-list -pagination -between">
@@ -14,4 +14,4 @@
         </li><!--/.tribe-events-nav-next.menu-list_item-->
 
     </ul><!--/.tribe-events-sub-nav.menu-list.-pagination.-center-->
-</nav><!--/.content_menu-list_container.menu-list_container--><!--endRemoveIf(tribe_html)-->
+</nav><!--/.content_menu-list_container.menu-list_container-->

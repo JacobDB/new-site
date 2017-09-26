@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 $events_label_singular = tribe_get_event_label_singular();
 $events_label_plural = tribe_get_event_label_plural();
 $event_id = get_the_ID();
@@ -108,4 +108,4 @@ $event_id = get_the_ID();
     	</nav><!--/.tribe-events-single_menu-list_container.menu-list_container-->
     <?php endif; // (tribe_get_prev_event_link() || tribe_get_next_event_link()) ?>
 
-</div><!--/#tribe-events-content--><!--endRemoveIf(tribe_html)-->
+</div><!--/#tribe-events-content-->

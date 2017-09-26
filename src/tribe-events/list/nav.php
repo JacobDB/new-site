@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 global $wp_query;
 $events_label_plural = tribe_get_event_label_plural();
 ?>
@@ -23,4 +23,4 @@ $events_label_plural = tribe_get_event_label_plural();
             </li><!--/.tribe-events-nav-right-->
         </ul><!--/.menu-list.-pagination.-center-->
     </nav><!--/.content_menu-list_container.menu-list_container-->
-<?php endif; // (tribe_has_previous_event() || tribe_has_next_event()) ?><!--endRemoveIf(tribe_html)-->
+<?php endif; // (tribe_has_previous_event() || tribe_has_next_event()) ?>

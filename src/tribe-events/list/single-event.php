@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><?php
+<?php
 global $post;
 $venue_details     = tribe_get_venue_details();
 $has_venue_address = (!empty($venue_details["address"])) ? " location" : "";
@@ -78,4 +78,4 @@ $organizer         = tribe_get_organizer();
             <?php do_action("tribe_events_after_the_content"); ?>
         </div><!--/.col-12.col-xs-0-->
     </div><!--/.article_row.row.-padded-->
-</article><!--/.tribe-events-list_article.article.-eventexcerpt--><!--endRemoveIf(tribe_html)-->
+</article><!--/.tribe-events-list_article.article.-eventexcerpt-->

@@ -1,4 +1,4 @@
-<!--removeIf(tribe_html)--><script type="text/html" id="tribe_tmpl_month_mobile_day_header">
+<script type="text/html" id="tribe_tmpl_month_mobile_day_header">
 	<div class="tribe-mobile-day" data-day="[[=date]]">[[ if(has_events) { ]]
 		<h3 class="tribe-mobile-day-heading tribe-events-calendar_title title">[[=i18n.for_date]] <span>[[=raw date_name]]</span></h3>[[ } ]]
 	</div>
@@ -27,4 +27,4 @@
 			<span class="tribe-events-calendar_text text"><a class="tribe-events-calendar_link link" href="[[=permalink]]" class="tribe-events-read-more" rel="bookmark">[[=i18n.find_out_more]]</a></span>
 		</div>
 	</div>
-</script><!--endRemoveIf(tribe_html)-->
+</script>
