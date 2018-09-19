@@ -25,6 +25,7 @@
                 </div><!--/.navigation_inner-->
             </div><!--/.navigation-block.-flyout._hidden-xs._noncritical-->
         <?php endif; ?>
+        <?php __gulp_init__namespace_get_template_part("partials/modules/pswp-element.php"); ?>
         <?php wp_footer(); ?>
     </body>
 </html>

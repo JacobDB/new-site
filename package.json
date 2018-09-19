@@ -95,6 +95,7 @@
     "gutenberg-web-type": "^1.2.3",
     "layzr.js": "^2.2.2",
     "normalize-scss": "^7.0.1",
+    "photoswipe": "^4.1.2",
     "picturefill": "^3.0.2",
     "scroll-hint": "^1.2.0",
     "slideout": "^1.0.1",
