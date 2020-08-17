@@ -214,6 +214,46 @@ function __gulp_init_namespace___is_tribe_page(): array {
 
 /* FILTERS */
 
+
+/**
+ * Change order of Tribe Events dependencies so that they work better with async/defer
+ *
+ * @return void
+ */
+function __gulp_init_namespace___tribe_events_fix_scripts_order(): void {
+    global $wp_scripts;
+
+    /**
+     * Array to store transposed dependencies
+     */
+    $deps = [];
+
+    /**
+     * Find all `tribe-events-views-v2-` dependencies of `tribe-events-views-v2-manager`, store them
+     * in a variable for reference, and remove them.
+     */
+    if (isset($wp_scripts->registered["tribe-events-views-v2-manager"])) {
+        foreach ($wp_scripts->registered["tribe-events-views-v2-manager"]->deps as $key => $handle) {
+            if (preg_match("/^tribe-events-views-v2-.+$/", $handle)) {
+                $deps[] = $handle;
+                unset($wp_scripts->registered["tribe-events-views-v2-manager"]->deps[$key]);
+            }
+        }
+    }
+
+    /**
+     * Add `tribe-events-views-v2-manager` as a dependency for all dependencies
+     */
+    foreach ($deps as $dep) {
+        if (key_exists($dep, $wp_scripts->registered)) {
+            if (! in_array("tribe-events-views-v2-manager", $wp_scripts->registered[$dep]->deps)) {
+                $wp_scripts->registered[$dep]->deps[] = "tribe-events-views-v2-manager";
+            }
+        }
+    }
+}
+add_action("wp_enqueue_scripts", "__gulp_init_namespace___tribe_events_fix_scripts_order");
+
 /**
  * Use correct Tribe templates, if they exist
  *
