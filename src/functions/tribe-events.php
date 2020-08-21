@@ -255,42 +255,6 @@ function __gulp_init_namespace___tribe_events_fix_scripts_order(): void {
 add_action("wp_enqueue_scripts", "__gulp_init_namespace___tribe_events_fix_scripts_order");
 
 /**
- * Use correct Tribe templates, if they exist
- *
- * @param  string $template
- *
- * @return string
- */
-function __gulp_init_namespace___tribe_force_page_templates(string $template): string {
-    $tribe_page = __gulp_init_namespace___is_tribe_page();
-
-    if ($tribe_page && $tribe_page["type"] === "single") {
-        if (in_array("tribe_events", $tribe_page["variants"])) {
-            return locate_template(["single-tribe_events.php", "single.php", "page.php", "index.php"]);
-        }
-
-        if (in_array("tribe_venue", $tribe_page["variants"])) {
-            return locate_template(["single-tribe_venue.php", "single-tribe_events.php", "single.php", "page.php", "index.php"]);
-        }
-
-        if (in_array("tribe_organizer", $tribe_page["variants"])) {
-            return locate_template(["single-tribe_organizer.php", "single-tribe_events.php", "single.php", "page.php", "index.php"]);
-        }
-    }
-
-    if ($tribe_page && $tribe_page["type"] === "archive") {
-        if (in_array("tribe_events_cat", $tribe_page["variants"])) {
-            return locate_template(["taxonomy-tribe_events_cat.php", "archive-tribe_events.php", "page.php", "index.php"]);
-        } else {
-            return locate_template(["archive-tribe_events.php", "page.php", "index.php"]);
-        }
-    }
-
-    return $template;
-}
-add_filter("template_include", "__gulp_init_namespace___tribe_force_page_templates", 50);
-
-/**
  * Remove recurring events duplicates from search results
  *
  * @see https://www.relevanssi.com/knowledge-base/showing-one-recurring-event/
