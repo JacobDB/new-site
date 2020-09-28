@@ -227,6 +227,20 @@ $wc_font: $body-font;
     }
 }
 
+.woocommerce div.product form.cart .variations label { // woocommerce.css:506
+    & {
+        font-family: $wc_font;
+    }
+}
+
+.woocommerce div.product form.cart .variations select { // woocommerce.css:510
+    & {
+        @extend %wc__input;
+        @extend %wc__input--select;
+        @extend %wc__input--select-arrow;
+    }
+}
+
 .woocommerce ul.products li.product .woocommerce-loop-category__title,
 .woocommerce ul.products li.product .woocommerce-loop-product__title,
 .woocommerce ul.products li.product h3 { // woocommerce.css:514
@@ -238,6 +252,13 @@ $wc_font: $body-font;
         font-size: 1.25em;
         margin-bottom: 0.25em;
         padding: 0;
+    }
+}
+
+.woocommerce div.product form.cart .reset_variations { // woocommerce.css:525
+    & {
+        @extend %wc__text;
+        @extend %wc__link;
     }
 }
 
@@ -325,6 +346,35 @@ $wc_font: $body-font;
 
     & {
         font-family: $wc_font;
+    }
+}
+
+.woocommerce #respond input#submit.alt.disabled,
+.woocommerce #respond input#submit.alt.disabled:hover,
+.woocommerce #respond input#submit.alt:disabled,
+.woocommerce #respond input#submit.alt:disabled:hover,
+.woocommerce #respond input#submit.alt:disabled[disabled],
+.woocommerce #respond input#submit.alt:disabled[disabled]:hover,
+.woocommerce a.button.alt.disabled,
+.woocommerce a.button.alt.disabled:hover,
+.woocommerce a.button.alt:disabled,
+.woocommerce a.button.alt:disabled:hover,
+.woocommerce a.button.alt:disabled[disabled],
+.woocommerce a.button.alt:disabled[disabled]:hover,
+.woocommerce button.button.alt.disabled,
+.woocommerce button.button.alt.disabled:hover,
+.woocommerce button.button.alt:disabled,
+.woocommerce button.button.alt:disabled:hover,
+.woocommerce button.button.alt:disabled[disabled],
+.woocommerce button.button.alt:disabled[disabled]:hover,
+.woocommerce input.button.alt.disabled,
+.woocommerce input.button.alt.disabled:hover,
+.woocommerce input.button.alt:disabled,
+.woocommerce input.button.alt:disabled:hover,
+.woocommerce input.button.alt:disabled[disabled],
+.woocommerce input.button.alt:disabled[disabled]:hover { // woocommerce.css:786
+    & {
+        background-color: $wc_primary;
     }
 }
 
@@ -808,5 +858,13 @@ $wc_font: $body-font;
 .woocommerce-order > p {
     & {
         @extend %wc__text;
+    }
+}
+
+.woocommerce-variation-add-to-cart {
+    & {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
     }
 }
