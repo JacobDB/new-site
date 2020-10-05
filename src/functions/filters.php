@@ -149,10 +149,12 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
             $existing_href    = $anchor->getAttribute("href");
             $existing_rel     = $anchor->getAttribute("rel");
 
+            $new_classes = "";
+
             if (preg_match("/button/i", $existing_classes)) {
-                $anchor->setAttribute("class", "user-content__button {$existing_classes}");
+                $new_classes = "user-content__button {$existing_classes}";
             } else {
-                $anchor->setAttribute("class", "user-content__link link {$existing_classes}");
+                $new_classes = "user-content__link link {$existing_classes}";
             }
 
             if (preg_match("/(jpg|jpeg|png|gif)$/i", $existing_href)) {
@@ -165,9 +167,14 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
 
                     if ($img_size) {
                         $anchor->setAttribute("data-size", "{$img_size[0]}x{$img_size[1]}");
-                        $anchor->setAttribute("class", "photoswipe {$existing_classes}");
+
+                        $new_classes = "photoswipe {$new_classes}";
                     }
                 }
+            }
+
+            if ($new_classes) {
+                $anchor->setAttribute("class", $new_classes);
             }
 
             if (! $existing_rel) {
