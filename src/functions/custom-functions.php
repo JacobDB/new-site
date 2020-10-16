@@ -625,3 +625,50 @@ function __gulp_init_namespace___get_menu_title(string $location): string {
 
     return $menu->name;
 }
+
+/**
+ * Get the "primary" term for a post as set by the WordPress SEO plugin
+ *
+ * @link https://whiteleydesigns.com/code/get-primary-term-if-yoast-seo-is-being-used/
+ *
+ * @param integer $post_id
+ * @param string $taxonomy
+ *
+ * @return WP_Term|bool
+ */
+function __gulp_init_namespace___get_primary_term(int $post_id = 0, string $taxonomy = "category") {
+    /**
+     * Get the current ID if one is not provided
+     */
+    $post_id  = $post_id !== 0 ? $post_id : get_the_ID();
+
+    /**
+     * Variable with which to store the result
+     */
+    $term = false;
+
+    /**
+     * Check for the "primary" term for the given $taxonomy and $post_id
+     */
+    if (class_exists("WPSEO_Primary_Term")) {
+        $wpseo_primary_term = new WPSEO_Primary_Term($taxonomy, $post_id);
+        $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+
+        if ($wpseo_primary_term) {
+            $term = get_term($wpseo_primary_term, $taxonomy);
+        }
+    }
+
+    /**
+     * If no primary term could be found, return the first assigned term if it exists
+     */
+    if (! $term || is_wp_error($term)) {
+        $terms = get_the_terms($post_id, $taxonomy);
+
+        if ($terms) {
+            $term = $terms[0];
+        }
+    }
+
+    return $term;
+}
