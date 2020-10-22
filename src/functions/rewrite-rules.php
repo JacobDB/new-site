@@ -8,7 +8,7 @@
  *
  * @return void
  */
-function __gulp_init_namespace___pwa_rewrite_rules(): void {
+function __gulp_init_namespace___rewrite_rules(): void {
     /**
      * Point to manifest generator at /manifest.json
      */
@@ -27,4 +27,4 @@ function __gulp_init_namespace___pwa_rewrite_rules(): void {
      */
     add_rewrite_rule("media/(.*)$", str_replace(ABSPATH, "", get_stylesheet_directory()) . "/assets/media/$1", "top");
 }
-add_action("init", "__gulp_init_namespace___pwa_rewrite_rules");
+add_action("init", "__gulp_init_namespace___rewrite_rules");
