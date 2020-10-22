@@ -34,7 +34,7 @@ function __gulp_init_namespace___acf_delay_shortcode_expansion(): void {
 add_action("wp", "__gulp_init_namespace___acf_delay_shortcode_expansion");
 
 // remove wpautop stuff from shortcodes
-add_action("acf_the_content", "__gulp_init_namespace___fix_shortcodes", 15);
+add_filter("acf_the_content", "__gulp_init_namespace___fix_shortcodes", 15);
 
 // add classes to elements
 add_filter("acf_the_content", "__gulp_init_namespace___add_user_content_classes", 20);
