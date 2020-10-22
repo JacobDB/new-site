@@ -568,7 +568,7 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
         $images = $XPath->query("//*[self::img or self::source]");
 
         foreach ($images as $image) {
-            if ($image->parentNode->nodeName !== "audio" && $image->parentNode->nodeName !== "video" && $image->parentNode->nodeName !== "noscript") {
+            if (! in_array($image->parentNode->nodeName, ["audio", "video", "noscript"])) {
                 $existing_src    = $image->getAttribute("src");
                 $existing_srcset = $image->getAttribute("srcset");
 
