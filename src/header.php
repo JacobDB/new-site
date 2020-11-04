@@ -29,13 +29,21 @@
                             </button>
                             <?php if (! is_search()): ?>
                                 <div class="header__search-form__container search-form__container search-form__container--expandable __nomargin __hidden-xs" role="search" id="mobile-search">
-                                    <?php get_search_form(); ?>
+                                    <?php
+                                    get_search_form([
+                                        "id" => "mobile-search",
+                                    ]);
+                                    ?>
                                 </div>
                             <?php endif; ?>
                         </div><!--/.col-auto-->
                         <div class="col-xs-auto col--grow-0 col--shrink-0 __visible-xs">
                             <div class="header__search-form__container search-form__container __nomargin __visible-xs" role="search">
-                                <?php get_search_form(); ?>
+                                <?php
+                                get_search_form([
+                                    "id" => "desktop-search",
+                                ]);
+                                ?>
                             </div>
                         </div>
                     </div><!--/.header__row-->

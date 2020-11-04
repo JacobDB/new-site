@@ -568,7 +568,7 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
         $images = $XPath->query("//*[self::img or self::source]");
 
         foreach ($images as $image) {
-            if (! in_array($image->parentNode->nodeName, ["audio", "video", "noscript"])) {
+            if (! in_array($image->parentNode->nodeName, ["audio", "video", "noscript"]) && ! $image->getAttribute("data-orig-file")) {
                 $existing_src    = $image->getAttribute("src");
                 $existing_srcset = $image->getAttribute("srcset");
 
@@ -841,3 +841,64 @@ function __gulp_init_namespace___comment_text_the_content(string $comment_text, 
     return apply_filters("the_content", $comment_text);
 }
 add_filter("comment_text", "__gulp_init_namespace___comment_text_the_content");
+
+/**
+ * Display "missing alt tag" message when editing posts
+ *
+ * @return void
+ */
+function __gulp_init_namespace___alt_tag_notice(): void {
+    global $pagenow;
+    global $post;
+
+    /**
+     * Fail out if it's not the post edit page, or a post object does not exit
+     */
+    if (! ($pagenow === "post.php" && $post)) {
+        return;
+    }
+
+    $missing_alt = false;
+
+    /**
+     * Check if the featured image has an alt tag
+     */
+    if (has_post_thumbnail($post->ID) && ! get_post_meta(get_post_thumbnail_id($post->ID), "_wp_attachment_image_alt", true)) {
+        $missing_alt = true;
+    }
+
+    /**
+     * Check if ACF images have alt tags
+     */
+    if (! $missing_alt && function_exists("get_fields") && $acf_fields = get_fields($post->ID)) {
+        foreach ($acf_fields as $field) {
+            if (is_array($field) && isset($field["alt"]) && trim($field["alt"]) === "") {
+                $missing_alt = true; break;
+            } elseif (is_string($field) && ! __gulp_init_namespace___imgs_have_alts($field)) {
+                $missing_alt = true; break;
+            } elseif (is_array($field)) {
+                // need to figure out a way to identify nested fields (i.e. repeaters)
+            }
+        }
+    }
+
+    /**
+     * Check if post content have alt tags
+     */
+    if (! $missing_alt && $post && $post->post_content && ! __gulp_init_namespace___imgs_have_alts($post->post_content)) {
+        $missing_alt = true;
+    }
+
+    /**
+     * Display the notice, if necessary
+     */
+    if ($missing_alt) {
+        ?>
+        <div class="notice notice-error">
+            <p><?php _e("One or more images are missing alternative text; the affected images are outlined in red.", "__gulp_init_namespace__"); ?></p>
+        </div>
+        <?php
+    }
+
+}
+add_action("admin_notices", "__gulp_init_namespace___alt_tag_notice");

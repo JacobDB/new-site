@@ -22,7 +22,7 @@
         "function-parentheses-space-inside": "never",
         "function-url-no-scheme-relative": true,
         "function-url-quotes": "always",
-        "function-url-scheme-whitelist": ["https", "data"],
+        "function-url-scheme-allowed-list": ["https", "data"],
         "indentation": 4,
         "max-nesting-depth": 3,
         "no-descending-specificity": null,

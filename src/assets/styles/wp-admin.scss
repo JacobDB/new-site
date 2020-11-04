@@ -1,0 +1,11 @@
+// Styles written by __gulp_init_author_name__ @ __gulp_init_author_company__
+
+/* stylelint-disable selector-max-id, selector-max-type, selector-no-qualifying-type */
+
+#set-post-thumbnail,
+.acf-image-uploader.has-value .image-wrap {
+    img:not([alt]),
+    img[alt=""] {
+        border: 2px dashed red;
+    }
+}

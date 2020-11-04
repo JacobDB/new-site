@@ -12,7 +12,7 @@
             <div class="navigation-block navigation-block--flyout __hidden-xs __noncritical" role="navigation" aria-hidden="true" id="mobile-menu" tabindex="0">
                 <div class="navigation__inner">
                     <figure class="navigation__figure">
-                        <img class="navigation__image" srcset="<?php echo get_theme_file_uri("assets/media/navigation-banner.jpg"); ?>" alt="" />
+                        <?php echo __gulp_init_namespace___img(get_theme_file_uri("assets/media/navigation-banner.jpg"), ["alt" => "", "class" => "navigation__image"]); ?>
                     </figure>
                     <nav class="navigation__menu-list__container menu-list__container">
                         <?php

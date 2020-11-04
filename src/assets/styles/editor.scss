@@ -1,6 +1,6 @@
 // Styles written by __gulp_init_author_name__ @ __gulp_init_author_company__
 
-/* stylelint-disable selector-max-type */
+/* stylelint-disable selector-max-type, selector-no-qualifying-type */
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic");
 
@@ -118,5 +118,11 @@
 
     hr {
         @extend .divider !optional;
+    }
+
+    // highlight images with no alt tag
+    img:not([alt]),
+    img[alt=""] {
+        border: 2px dashed red;
     }
 }

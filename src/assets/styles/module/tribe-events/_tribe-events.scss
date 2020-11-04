@@ -72,6 +72,14 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
     }
 }
 
+/* tooltip */
+
+.tribe-events-tooltip .tribe-events-event-body {
+    & {
+        font-family: $tribe_font;
+    }
+}
+
 /* featured */
 
 .tribe-common .tribe-common-svgicon--featured {
@@ -323,6 +331,18 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
     }
 }
 
+.single-tribe_events .tribe-events-schedule .event-is-recurring {
+    & {
+        font-family: $tribe_font;
+    }
+}
+
+.single-tribe_events .tribe-events-schedule .event-is-recurring a {
+    & {
+        color: $tribe_primary;
+    }
+}
+
 .tribe-events-meta-group .tribe-events-single-section-title {
     & {
         font-family: $tribe_font;
@@ -350,6 +370,23 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
     }
 }
 
+.tribe-events-single ul.tribe-related-events li .tribe-related-event-info {
+    & {
+        font-family: $tribe_font;
+    }
+
+    a {
+        color: $tribe_primary;
+    }
+}
+
+.tribe-events-single ul.tribe-related-events .recurringinfo {
+    & {
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+    }
+}
+
 #tribe-events-footer .tribe-events-sub-nav,
 #tribe-events-header .tribe-events-sub-nav {
     & {
@@ -362,5 +399,13 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
 #tribe-events-header .tribe-events-sub-nav a {
     & {
         color: $tribe_primary;
+    }
+}
+
+/* related events */
+
+.tribe-events-related-events-title {
+    & {
+        font-family: $tribe_font;
     }
 }

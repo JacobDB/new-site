@@ -102,11 +102,12 @@ function __gulp_init_namespace___enqueue_scripts_login(): void {
 add_action("login_enqueue_scripts", "__gulp_init_namespace___enqueue_scripts_login");
 
 /**
- * Add wp-admin scripts
+ * Add wp-admin styles & scripts
  *
  * @return void
  */
 function __gulp_init_namespace___enqueue_scripts_admin(): void {
+    wp_enqueue_style("__gulp_init_namespace__-styles-wp-admin", get_theme_file_uri(__gulp_init_namespace___get_theme_file_path("assets/styles/wp-admin.*.css", true)), [], "<%= version %>");
     wp_enqueue_script("__gulp_init_namespace__-scripts-wp-admin", get_theme_file_uri(__gulp_init_namespace___get_theme_file_path("assets/scripts/wp-admin.*.js", true)), [], "<%= version %>", true);
 }
 add_action("admin_enqueue_scripts", "__gulp_init_namespace___enqueue_scripts_admin");

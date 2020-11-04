@@ -3,7 +3,7 @@
 // Scripts written by __gulp_init_author_name__ @ __gulp_init_author_company__
 
 import debounce from "debounce";
-import focusTrap from "focus-trap";
+import createFocusTrap from "focus-trap";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 // get the elements
@@ -25,7 +25,7 @@ if (MENU !== null && OVERLAY !== null && TOGGLE !== null) {
     /**
      * Set up a focus trap
      */
-    const FOCUS_TRAP = focusTrap(MENU, {
+    const FOCUS_TRAP = createFocusTrap(MENU, {
         clickOutsideDeactivates: true,
     });
 

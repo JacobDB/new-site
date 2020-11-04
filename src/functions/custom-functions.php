@@ -672,3 +672,35 @@ function __gulp_init_namespace___get_primary_term(int $post_id = 0, string $taxo
 
     return $term;
 }
+
+/**
+ * Check if a string has alt values on all images
+ *
+ * @param string $content
+ * @return boolean
+ */
+function __gulp_init_namespace___imgs_have_alts(string $content): bool {
+    $DOM = new DOMDocument();
+
+    // disable errors to get around HTML5 warnings...
+    libxml_use_internal_errors(true);
+
+    // load in content
+    $DOM->loadHTML(mb_convert_encoding("<html><body>{$content}</body></html>", "HTML-ENTITIES", "UTF-8"), LIBXML_HTML_NODEFDTD);
+
+    // reset errors to get around HTML5 warnings...
+    libxml_clear_errors();
+
+    // XPath required otherwise an infinite loop occurs
+    $XPath = new DOMXPath($DOM);
+
+    $images = $XPath->query("//*[self::img or self::source]");
+
+    foreach ($images as $image) {
+        if (! $image->getAttribute("alt") || trim($image->getAttribute("alt")) === "") {
+            return false; break;
+        }
+    }
+
+    return true;
+}
