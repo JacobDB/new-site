@@ -214,7 +214,6 @@ function __gulp_init_namespace___is_tribe_page(): array {
 
 /* FILTERS */
 
-
 /**
  * Change order of Tribe Events dependencies so that they work better with async/defer
  *
