@@ -2,7 +2,6 @@
 
 // Scripts written by Jacob Bearce @ Weblinx, Inc.
 
-import "mdn-polyfills/Array.prototype.forEach";
 import "mdn-polyfills/Element.prototype.closest";
 import "mdn-polyfills/NodeList.prototype.forEach";
 import "mdn-polyfills/Object.assign";

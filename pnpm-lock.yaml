@@ -21,6 +21,7 @@ dependencies:
   scroll-hint: 1.2.4
   swiper: 4.5.1
   transition-to-from-auto: 0.5.2
+  workbox-core: 5.1.4
   workbox-expiration: 5.1.4
   workbox-precaching: 5.1.4
   workbox-routing: 5.1.4
@@ -12678,6 +12679,7 @@ specifiers:
   vinyl-ftp: 'github:JacobDB/vinyl-ftp#issue-90'
   webpack: ^5.4.0
   webpack-stream: ^6.1.0
+  workbox-core: ^5.1.4
   workbox-expiration: ^5.1.4
   workbox-precaching: ^5.1.4
   workbox-routing: ^5.1.4

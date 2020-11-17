@@ -48,9 +48,14 @@ svg {
     max-width: 100%;
 }
 
-// Hide outline on focus
-
 /* Remove outline for non-keyboard :focus */
+
 *:focus:not(.focus-visible) {
     outline: none;
+}
+
+// remove fixed height from images
+
+img {
+    height: auto;
 }
