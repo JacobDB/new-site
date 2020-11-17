@@ -13,8 +13,6 @@ get_extended_template_part("layout", "hero", [
         <div class="content__post">
             <?php do_action("__gulp_init_namespace___before_content"); ?>
 
-hello world
-
             <?php
             if (have_posts()) {
                 while (have_posts()) { the_post();

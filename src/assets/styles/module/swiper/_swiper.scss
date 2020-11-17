@@ -23,27 +23,31 @@
 
 .swiper__picture {
     & {
+        display: flex;
         flex: none;
+        position: relative;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        padding-bottom: (400 / 700) * 100%;
+        width: 100%;
+    }
+
+    .swiper-container--height-fixed &::after {
+        padding-bottom: remify(400, 16);
     }
 }
 
 .swiper__image {
     & {
         display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
         width: 100%;
-    }
-
-    .swiper-container--height-auto & {
-        left: 50%;
-        min-width: 100%;
-        position: relative;
-        transform: translateX(-50%);
-        width: auto;
-    }
-
-    // hack to prevent square placeholder images
-    &.lazyloading {
-        height: 1px;
     }
 }
 

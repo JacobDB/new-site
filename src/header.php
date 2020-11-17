@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-0">
                             <a class="header__logo logo" href="<?php echo home_url(); ?>">
-                                <?php echo __gulp_init_namespace___img(get_theme_file_uri("assets/media/logo.svg"), ["alt" => get_bloginfo("name"), "class" => "logo__image"]); ?>
+                                <?php echo __gulp_init_namespace___img(get_theme_file_uri("assets/media/logo.svg"), ["alt" => get_bloginfo("name"), "class" => "logo__image", "height" => "69", "width" => "300"], false); ?>
                             </a>
                         </div>
                         <div class="col-auto col--grow-0 col--shrink-0 __hidden-xs">

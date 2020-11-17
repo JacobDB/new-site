@@ -568,9 +568,23 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
         $images = $XPath->query("//*[self::img or self::source]");
 
         foreach ($images as $image) {
-            if (! in_array($image->parentNode->nodeName, ["audio", "video", "noscript"]) && ! $image->getAttribute("data-orig-file")) {
+            if ($image->parentNode->nodeName !== "noscript" && ! $image->getAttribute("data-orig-file")) {
                 $existing_src    = $image->getAttribute("src");
                 $existing_srcset = $image->getAttribute("srcset");
+
+                $height = $image->getAttribute("height");
+                $width  = $image->getAttribute("width");
+                $size   = $image->getAttribute("intrinsicsize");
+
+                // try to determine height and width programmatically
+                if (! ($height && $width) && ($existing_src || $existing_srcset)) {
+                    $src  = $existing_src ? $existing_src : explode(" ", $existing_srcset)[0];
+
+                    if ($data = getimagesize($_SERVER["DOCUMENT_ROOT"] . parse_url($src, PHP_URL_PATH))) {
+                        $height = $data[1];
+                        $width  = $data[0];
+                    }
+                }
 
                 // add noscript before images
                 $noscript = $DOM->createElement("noscript");
@@ -589,30 +603,27 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
                     $image->setAttribute("data-srcset", $existing_srcset);
                 }
 
-                $height = $image->getAttribute("height");
-                $width  = $image->getAttribute("width");
-                $size   = $image->getAttribute("intrinsicsize");
+                if ($height && $width) {
+                    $image->setAttribute("data-aspectratio", "{$width}/{$height}");
+                }
 
-                // try to determine height and width programmatically
-                if (! ($height && $width) && ! $size && ($existing_src || $existing_srcset)) {
-                    $src  = $existing_src ? $existing_src : explode(" ", $existing_srcset)[0];
-
-                    if ($data = getimagesize($_SERVER["DOCUMENT_ROOT"] . parse_url($src, PHP_URL_PATH))) {
-                        $height = $data[1];
-                        $width  = $data[0];
+                if ($image->nodeName !== "source") {
+                    // set the height attribute
+                    if ($height) {
+                        $image->setAttribute("height", $height);
                     }
+
+                    // set the width attribute
+                    if ($width) {
+                        $image->setAttribute("width", $width);
+                    }
+
+                    // add loading="lazy"
+                    $image->setAttribute("loading", "lazy");
+
+                    // add lazyload and __js classes
+                    $image->setAttribute("class", "lazyload __js {$image->getAttribute("class")}");
                 }
-
-                // add intrinsicsize if height and width exist
-                if ($height && $width && ! $size) {
-                    $image->setAttribute("intrinsicsize", "{$width}x{$height}");
-                }
-
-                // add loading="lazy"
-                $image->setAttribute("loading", "lazy");
-
-                // add lazyload and __js classes
-                $image->setAttribute("class", "lazyload __js {$image->getAttribute("class")}");
             }
         }
 

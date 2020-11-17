@@ -39,7 +39,7 @@ function __gulp_init_namespace___resource_hints(array $urls, string $relation_ty
         foreach ($wp_styles->queue as $style) {
             $data = $wp_styles->registered[$style];
 
-            if ($data->src && ! isset($data->extra["conditional"])) {
+            if ($data->src && ! isset($data->extra["conditional"]) && ! (isset($data->args) || $data->args === "print")) {
                 $urls[] = $data->src;
             }
         }
