@@ -4,6 +4,34 @@
 \* ------------------------------------------------------------------------ */
 
 /**
+ * Delay when shortcodes get expanded
+ *
+ * @param  string $value
+ *
+ * @return string
+ */
+function __gulp_init_namespace___nf_delay_shortcode_expansion(): void {
+    remove_filter("nf_the_content", "do_shortcode", 11);
+    add_filter("nf_the_content", "do_shortcode", 25);
+}
+add_action("wp", "__gulp_init_namespace___nf_delay_shortcode_expansion");
+
+// add classes to elements
+add_filter("nf_the_content", "__gulp_init_namespace___add_user_content_classes", 20);
+
+// wrap handorgel accordions
+add_filter("nf_the_content", "__gulp_init_namespace___wrap_handorgel_shortcodes", 30);
+
+// enable responsive iframes
+add_filter("nf_the_content", "__gulp_init_namespace___responsive_iframes", 20);
+
+// enable responsive tables
+add_filter("nf_the_content", "__gulp_init_namespace___responsive_tables", 20);
+
+// lazy load images
+add_filter("nf_the_content", "__gulp_init_namespace___lazy_load_images", 30);
+
+/**
  * Disable display styles
  *
  * @return void
@@ -97,15 +125,15 @@ function __gulp_init_namespace___ninja_forms_format_html(array $fields): array {
 
     foreach ($fields as $key => $field) {
         if (isset($field["desc_text"]) && trim($field["desc_text"])) {
-            $fields[$key]["desc_text"] = apply_filters("the_content", stripslashes($field["desc_text"]));
+            $fields[$key]["desc_text"] = apply_filters("nf_the_content", stripslashes($field["desc_text"]));
         }
 
         if (isset($field["help_text"]) && trim($field["help_text"])) {
-            $fields[$key]["help_text"] = apply_filters("the_content", stripslashes($field["help_text"]));
+            $fields[$key]["help_text"] = apply_filters("nf_the_content", stripslashes($field["help_text"]));
         }
 
         if (isset($field["type"]) && $field["type"] === "html" && isset($field["value"]) && trim($field["value"])) {
-            $fields[$key]["value"] = apply_filters("the_content", stripslashes($field["value"]));
+            $fields[$key]["value"] = apply_filters("nf_the_content", stripslashes($field["value"]));
         }
     }
 
@@ -122,7 +150,7 @@ add_filter("ninja_forms_display_fields", "__gulp_init_namespace___ninja_forms_fo
  */
 function __gulp_init_namespace___ninja_forms_format_success_message(array $action_settings): array {
     if ($action_settings["type"] === "successmessage") {
-        $action_settings["success_msg"] = apply_filters("the_content", $action_settings["success_msg"]);
+        $action_settings["success_msg"] = apply_filters("nf_the_content", $action_settings["success_msg"]);
     }
 
     return $action_settings;
