@@ -1,7 +1,42 @@
 <?php
 /* ------------------------------------------------------------------------ *\
- * Functions: Advanced Custom Fields
+ * Advanced Custom Fields
 \* ------------------------------------------------------------------------ */
+
+/* FUNCTIONS */
+
+/**
+ * Wrapper around ACF's `get_field` to ensure errors don't occur if ACF isn't active
+ *
+ * @param string $name  ACF field name
+ * @param mixed $post_id  An ID for a post
+ *
+ * @return mixed  The field value
+ */
+function __gulp_init_namespace___get_field(string $name, $post_id = null) {
+    if (function_exists("get_field")) {
+        return apply_filters("__gulp_init_namespace___acf_format_value", get_field($name, $post_id));
+    } else {
+        return false;
+    }
+}
+
+/* FILTERS */
+
+/**
+ * Convert phone numbers from objects to arrays
+ *
+ * @param mixed $value
+ * @return mixed
+ */
+function __gulp_init_namespace___acf_format_phone_number_value($value) {
+    if ($value instanceof Log1x\AcfPhoneNumber\PhoneNumber) {
+        $value = $value->toArray();
+    }
+
+    return $value;
+}
+add_filter("__gulp_init_namespace___acf_format_value", "__gulp_init_namespace___acf_format_phone_number_value", 10, 1);
 
 /* FILTERS */
 

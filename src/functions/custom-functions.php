@@ -4,22 +4,6 @@
 \* ------------------------------------------------------------------------ */
 
 /**
- * Wrapper around ACF's `get_field` to ensure errors don't occur if ACF isn't active
- *
- * @param string $name  ACF field name
- * @param mixed $post_id  An ID for a post
- *
- * @return mixed  The field value
- */
-function __gulp_init_namespace___get_field(string $name, $post_id = null) {
-    if (function_exists("get_field")) {
-        return get_field($name, $post_id);
-    } else {
-        return false;
-    }
-}
-
-/**
  * Remove extra tags added for use with DOMDocument
  *
  * @see https://stackoverflow.com/a/6406139/654480

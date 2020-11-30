@@ -1,6 +1,6 @@
 <?php
 /* ------------------------------------------------------------------------ *\
- * Functions: Filters
+ * Filters
 \* ------------------------------------------------------------------------ */
 
 /**
@@ -526,7 +526,6 @@ function __gulp_init_namespace___responsive_tables(string $content): string {
 
         $table_container = $DOM->createElement("div");
         $table_container->setAttribute("class", "user-content__text__table__container text__table__container");
-        $table_container->setAttribute("data-slideout-ignore", "true");
 
         foreach ($tables as $table) {
             $table_container_clone = $table_container->cloneNode();
