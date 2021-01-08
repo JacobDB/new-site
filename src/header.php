@@ -5,9 +5,11 @@
     </head>
     <body <?php body_class(); ?>>
         <div class="page__container" id="page-container">
+
             <a class="skip-links" href="#content">
                 <?php _e("Skip to content", "__gulp_init_namespace__"); ?>
             </a>
+
             <header class="header-block">
                 <div class="header__inner">
                     <div class="header__row row row--padded-tight row--align-center">
@@ -49,6 +51,7 @@
                     </div><!--/.header__row-->
                 </div><!--/.header__inner-->
             </header><!--/.header-block-->
+
             <?php if (has_nav_menu("primary")): ?>
                 <div class="navigation-block __visible-xs __noprint">
                     <div class="navigation__inner">
@@ -73,4 +76,5 @@
                     </div><!--/.navigation__inner-->
                 </div><!--/.navigation-block-->
             <?php endif; ?>
+
             <main id="content" tabindex="0">

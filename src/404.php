@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+
 <div class="content-block">
     <div class="content__inner">
         <div class="content__post">
@@ -17,4 +18,5 @@
         </div><!--/.content__post-->
     </div><!--/.content__inner-->
 </div><!--/.content-block-->
+
 <?php get_footer(); ?>

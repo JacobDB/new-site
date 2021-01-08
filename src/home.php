@@ -3,11 +3,13 @@ $post_id    = get_option("page_for_posts") ? get_post(get_option("page_for_posts
 $post_title = $post_id && get_the_title($post_id) ? get_the_title($post_id) : __("Latest Posts", "__gulp_init_namespace__");
 ?>
 <?php get_header(); ?>
+
 <?php
 get_extended_template_part("layout", "hero", [
     "title" => $post_title,
 ]);
 ?>
+
 <div class="content-block">
     <div class="content__inner">
         <div class="content__post">
@@ -44,4 +46,5 @@ get_extended_template_part("layout", "hero", [
         </div><!--/.content__post-->
     </div><!--/.content__inner-->
 </div><!--/.content-block-->
+
 <?php get_footer(); ?>

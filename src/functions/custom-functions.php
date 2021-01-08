@@ -4,31 +4,6 @@
 \* ------------------------------------------------------------------------ */
 
 /**
- * Remove extra tags added for use with DOMDocument
- *
- * @see https://stackoverflow.com/a/6406139/654480
- *
- * @param object $DOM  DOMDocument object
- *
- * @return string  Formatted HTML
- */
-function __gulp_init_namespace___remove_extra_tags(object $DOM): string {
-    $XPath = new DOMXPath($DOM);
-
-    $body_contents = $XPath->query("//body/node()");
-
-    $html = "";
-
-    if ($body_contents) {
-        foreach ($body_contents as $element) {
-            $html .= $DOM->saveHTML($element);
-        }
-    }
-
-    return $html;
-}
-
-/**
  * Get the path to the most recent version of a file given a glob (i.e. modern.*.css => modern.17ee0314.css)
  *
  * @param string $path  Glob pattern for file to search for

@@ -38,8 +38,6 @@ function __gulp_init_namespace___acf_format_phone_number_value($value) {
 }
 add_filter("__gulp_init_namespace___acf_format_value", "__gulp_init_namespace___acf_format_phone_number_value", 10, 1);
 
-/* FILTERS */
-
 /**
  * Filter out badly encoded characters from strings
  *

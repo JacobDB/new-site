@@ -614,9 +614,9 @@ $wc_font: $body-font;
     }
 }
 
-#add_payment_method #payment ul.payment_methods li input,
-.woocommerce-cart #payment ul.payment_methods li input,
-.woocommerce-checkout #payment ul.payment_methods li input { // woocommerce.css:2019
+#add_payment_method #payment ul.payment_methods li > input,
+.woocommerce-cart #payment ul.payment_methods li > input,
+.woocommerce-checkout #payment ul.payment_methods li > input { // woocommerce.css:2019
     & {
         left: -999em;
         position: absolute;
@@ -724,7 +724,7 @@ $wc_font: $body-font;
 #add_payment_method #payment ul.payment_methods li,
 .woocommerce-cart #payment ul.payment_methods li,
 .woocommerce-checkout #payment ul.payment_methods li {
-    label {
+    > label {
         background: $wc_light_shade;
         cursor: pointer;
         display: flex;
@@ -733,12 +733,12 @@ $wc_font: $body-font;
         transition: background-color 0.15s, color 0.15s;
     }
 
-    input:checked + label {
+    > input:checked + label {
         background-color: $wc_primary;
         color: $wc_light;
     }
 
-    label img {
+    > label img {
         max-height: 32px;
     }
 }

@@ -1,13 +1,11 @@
 <?php get_header(); ?>
+
 <?php
 get_extended_template_part("layout", "hero", [
     "post"  => $post,
-    "class" => [
-        "block" => "__nopadding",
-        "inner" => "hero__inner--width-100",
-    ],
 ]);
 ?>
+
 <div class="content-block">
     <div class="content__inner">
         <div class="content__post">
@@ -30,4 +28,5 @@ get_extended_template_part("layout", "hero", [
         </div><!--/.content__post-->
     </div><!--/.content__inner-->
 </div><!--/.content-block-->
+
 <?php get_footer(); ?>

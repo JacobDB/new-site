@@ -137,7 +137,7 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
         libxml_use_internal_errors(true);
 
         // load in content
-        $DOM->loadHTML(mb_convert_encoding("<html><body>{$content}</body></html>", "HTML-ENTITIES", "UTF-8"), LIBXML_HTML_NODEFDTD);
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
 
         // reset errors to get around HTML5 warnings...
         libxml_clear_errors();
@@ -309,7 +309,7 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
         }
 
         // remove unneeded tags (inserted for parsing reasons)
-        $content = __gulp_init_namespace___remove_extra_tags($DOM);
+        $content = $DOM->saveHTML($DOM->documentElement);
     }
 
     return $content;
@@ -335,7 +335,7 @@ function __gulp_init_namespace___wrap_handorgel_shortcodes(string $content): str
         /**
          * Load in content
          */
-        $DOM->loadHTML(mb_convert_encoding("<html><body>{$content}</body></html>", "HTML-ENTITIES", "UTF-8"), LIBXML_HTML_NODEFDTD);
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
 
         /**
          * Reset errors to get around HTML5 warnings...
@@ -429,7 +429,7 @@ function __gulp_init_namespace___wrap_handorgel_shortcodes(string $content): str
         /**
          * Remove unneeded tags (inserted for parsing reasons)
          */
-        $content = __gulp_init_namespace___remove_extra_tags($DOM);
+        $content = $DOM->saveHTML($DOM->documentElement);
     }
 
     return $content;
@@ -451,7 +451,7 @@ function __gulp_init_namespace___responsive_iframes(string $content): string {
         libxml_use_internal_errors(true);
 
         // load in content
-        $DOM->loadHTML(mb_convert_encoding("<html><body>{$content}</body></html>", "HTML-ENTITIES", "UTF-8"), LIBXML_HTML_NODEFDTD);
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
 
         // reset errors to get around HTML5 warnings...
         libxml_clear_errors();
@@ -495,7 +495,7 @@ function __gulp_init_namespace___responsive_iframes(string $content): string {
         }
 
         // remove unneeded tags (inserted for parsing reasons)
-        $content = __gulp_init_namespace___remove_extra_tags($DOM);
+        $content = $DOM->saveHTML($DOM->documentElement);
     }
 
     return $content;
@@ -517,7 +517,7 @@ function __gulp_init_namespace___responsive_tables(string $content): string {
         libxml_use_internal_errors(true);
 
         // load in content
-        $DOM->loadHTML(mb_convert_encoding("<html><body>{$content}</body></html>", "HTML-ENTITIES", "UTF-8"), LIBXML_HTML_NODEFDTD);
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
 
         // reset errors to get around HTML5 warnings...
         libxml_clear_errors();
@@ -534,7 +534,7 @@ function __gulp_init_namespace___responsive_tables(string $content): string {
         }
 
         // remove unneeded tags (inserted for parsing reasons)
-        $content = __gulp_init_namespace___remove_extra_tags($DOM);
+        $content = $DOM->saveHTML($DOM->documentElement);
     }
 
     return $content;
@@ -556,7 +556,7 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
         libxml_use_internal_errors(true);
 
         // load in content
-        $DOM->loadHTML(mb_convert_encoding("<html><body>{$content}</body></html>", "HTML-ENTITIES", "UTF-8"), LIBXML_HTML_NODEFDTD);
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
 
         // reset errors to get around HTML5 warnings...
         libxml_clear_errors();
@@ -627,7 +627,7 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
         }
 
         // remove unneeded tags (inserted for parsing reasons)
-        $content = __gulp_init_namespace___remove_extra_tags($DOM);
+        $content = $DOM->saveHTML($DOM->documentElement);
     }
 
     return $content;
@@ -663,7 +663,7 @@ function __gulp_init_namespace___remove_thumbnail_dimensions(string $html): stri
         libxml_use_internal_errors(true);
 
         // load in content
-        $DOM->loadHTML(mb_convert_encoding("<html><body>{$html}</body></html>", "HTML-ENTITIES", "UTF-8"), LIBXML_HTML_NODEFDTD);
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$html}</body></html>", LIBXML_HTML_NODEFDTD);
 
         // reset errors to get around HTML5 warnings...
         libxml_clear_errors();
@@ -676,7 +676,7 @@ function __gulp_init_namespace___remove_thumbnail_dimensions(string $html): stri
         }
 
         // remove unneeded tags (inserted for parsing reasons)
-        $html = __gulp_init_namespace___remove_extra_tags($DOM);
+        $html = $DOM->saveHTML($DOM->documentElement);
     }
 
     return $html;
@@ -698,7 +698,7 @@ function __gulp_init_namespace___menu_list_link_classes(string $links): string {
         libxml_use_internal_errors(true);
 
         // load in content
-        $DOM->loadHTML(mb_convert_encoding("<html><body>{$links}</body></html>", "HTML-ENTITIES", "UTF-8"), LIBXML_HTML_NODEFDTD);
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$links}</body></html>", LIBXML_HTML_NODEFDTD);
 
         // reset errors to get around HTML5 warnings...
         libxml_clear_errors();
@@ -710,7 +710,7 @@ function __gulp_init_namespace___menu_list_link_classes(string $links): string {
         }
 
         // remove unneeded tags (inserted for parsing reasons)
-        $links = __gulp_init_namespace___remove_extra_tags($DOM);
+        $links = $DOM->saveHTML($DOM->documentElement);
     }
 
     return $links;
@@ -786,8 +786,8 @@ function __gulp_init_namespace___acrobat_link(): void {
         }
 
         if ($has_pdf === true) {
-            $output .= "<hr class='divider' />";
-            $output .= "<p class='content__text text __small'>" . sprintf(__("Having trouble opening PDFs? %sDownload Adobe Reader here.%s", "__gulp_init_namespace__"), "<a class='text_link link' href='https://get.adobe.com/reader/' target='_blank' rel='noopener'>", "</a>") . "</p>";
+            $output .= "<hr class='acrobat__divider divider' />";
+            $output .= "<p class='acrobat__text text'>" . sprintf(__("Having trouble opening PDFs? %sDownload Adobe Reader here.%s", "__gulp_init_namespace__"), "<a class='text__link link' href='https://get.adobe.com/reader/' target='_blank' rel='noopener'>", "</a>") . "</p>";
         }
 
         echo $output;

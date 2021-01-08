@@ -819,7 +819,7 @@ function __gulp_init_namespace___nav_menu_sub_menu(array $menu_items, object $ar
             /**
              * Remove all root menu items, except if the item is part of the viewed tree
              */
-            if ($menu_item->ID !== $viewed_item->ID && ! ($menu_item->current_item_ancestor) && intval($menu_item->menu_item_parent) === 0) {
+            if ($menu_item->ID !== $viewed_item->ID && ! $menu_item->current_item_ancestor && intval($menu_item->menu_item_parent) === 0) {
                 $remove = true;
             }
 

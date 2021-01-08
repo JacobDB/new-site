@@ -11,17 +11,5 @@
 
     & {
         background: color("background");
-        padding: remify(($content-padding * 1.25) $content-padding);
-    }
-}
-
-.hero__inner {
-    & {
-        margin: 0 auto;
-        max-width: remify($site-width);
-    }
-
-    &.hero__inner--width-100 {
-        max-width: 100%;
     }
 }
