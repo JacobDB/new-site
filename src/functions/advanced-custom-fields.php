@@ -47,6 +47,8 @@ add_filter("__gulp_init_namespace___acf_format_value", "__gulp_init_namespace___
 function __gulp_init_namespace___acf_remove_broken_characters($value) {
     if (is_string($value)) {
         $value = __gulp_init_namespace___remove_broken_characters($value);
+    } elseif (is_array($value) && isset($value["title"]) && is_string($value["title"])) {
+        $value["title"] = __gulp_init_namespace___remove_broken_characters($value["title"]);
     }
 
     return $value;

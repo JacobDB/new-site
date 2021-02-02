@@ -7,10 +7,9 @@ import Swiper from "swiper";
 // init swiper
 if (document.querySelectorAll(".swiper-container--hero .swiper-slide").length > 1) {
     new Swiper (".swiper-container--hero", {
-        autoplay: false,
-        // autoplay: {
-        //     delay: 15000,
-        // },
+        autoplay: {
+            delay: 15000,
+        },
         loop: true,
         navigation: {
             nextEl: ".swiper-container--hero .swiper-button--next",
