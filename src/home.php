@@ -1,12 +1,16 @@
 <?php
-$post_id    = get_option("page_for_posts") ? get_post(get_option("page_for_posts")) : false;
-$post_title = $post_id && get_the_title($post_id) ? get_the_title($post_id) : __("Latest Posts", "__gulp_init_namespace__");
+$home_object = get_option("page_for_posts") ? get_post(get_option("page_for_posts")) : false;
+$home_title  = $home_object && key_exists("post_title", $home_object) ? apply_filters("the_title", $home_object->post_title, $post->ID) : __("Latest Posts", "__gulp_init_namespace__");
+
+if (is_paged() && $page = get_query_var("paged")) {
+    $home_title = sprintf("{$home_title} - " . __("Page %s of %s", "__gulp_init_namespace__"), $page, $wp_query->max_num_pages);
+}
 ?>
 <?php get_header(); ?>
 
 <?php
 get_extended_template_part("layout", "hero", [
-    "title" => $post_title,
+    "title" => $home_title,
 ]);
 ?>
 
@@ -15,10 +19,12 @@ get_extended_template_part("layout", "hero", [
         <div class="content__post">
             <?php do_action("__gulp_init_namespace___before_content"); ?>
 
-            <?php if ($post_title): ?>
+            <?php if ($home_title): ?>
                 <article class="content__article article article--introduction">
                     <header class="article__header">
-                        <h1 class="article__title title"><?php echo $post_title; ?></h1>
+                        <h1 class="article__title title">
+                            <?php echo $home_title; ?>
+                        </h1>
                     </header>
                 </article>
             <?php endif; ?>

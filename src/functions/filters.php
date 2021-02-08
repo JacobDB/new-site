@@ -814,6 +814,23 @@ function __gulp_init_namespace___default_wpseo_metadesc(string $html): string {
 add_filter("wpseo_metadesc", "__gulp_init_namespace___default_wpseo_metadesc");
 
 /**
+ * Add (Page %s) to meta descriptions on archives which are paged
+ *
+ * @param string $html
+ * @return string
+ */
+function __gulp_init_namespace___wpseo_metadesc_archive_pagination(string $html): string {
+    global $wp_query;
+
+    if ((is_home() || is_archive()) && is_paged() && $page = get_query_var("paged")) {
+        $html .= ($html ? " - " : "") . sprintf(__("Page %s of %s", "__gulp_init_namespace__"), $page, $wp_query->max_num_pages);
+    }
+
+    return $html;
+}
+add_filter("wpseo_metadesc", "__gulp_init_namespace___wpseo_metadesc_archive_pagination");
+
+/**
  * Add `MSIE` and `Trident` to rejected user agents for caching
  *
  * @return void
