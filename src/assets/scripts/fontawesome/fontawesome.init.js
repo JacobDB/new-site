@@ -14,12 +14,13 @@ import { faFolder         as fasFaFolder         } from "@fortawesome/pro-solid-
 import { faQuestionCircle as fasFaQuestionCircle } from "@fortawesome/pro-solid-svg-icons/faQuestionCircle";
 import { faSearch         as fasFaSearch         } from "@fortawesome/pro-solid-svg-icons/faSearch";
 import { faTag            as fasFaTag            } from "@fortawesome/pro-solid-svg-icons/faTag";
+import { faTimes          as fasFaTimes          } from "@fortawesome/pro-solid-svg-icons/faTimes";
 import { faUserCircle     as fasFaUserCircle     } from "@fortawesome/pro-solid-svg-icons/faUserCircle";
 
 /**
  * Add solid icons
  */
-library.add(fasFaBars, fasFaCaretDown, fasFaCaretLeft, fasFaCaretRight, fasFaClock, fasFaComment, fasFaFolder, fasFaQuestionCircle, fasFaSearch, fasFaTag, fasFaUserCircle);
+library.add(fasFaBars, fasFaCaretDown, fasFaCaretLeft, fasFaCaretRight, fasFaClock, fasFaComment, fasFaFolder, fasFaQuestionCircle, fasFaSearch, fasFaTag, fasFaTimes, fasFaUserCircle);
 
 /**
  * Watch the DOM to insert icons

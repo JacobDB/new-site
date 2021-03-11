@@ -85,6 +85,63 @@ add_filter("acf_the_content", "__gulp_init_namespace___lazy_load_images", 30);
 
 /* REGISTRATIONS */
 
+// Start Alert Bar Options
+if( function_exists('acf_add_options_page') && function_exists('acf_add_local_field_group') ):
+
+acf_add_options_page(array(
+    'page_title' => __('Alert Bar', '__gulp_init_namespace__'),
+    'menu_slug' => 'alert',
+    'post_id' => 'alert',
+    'icon_url' => 'dashicons-warning',
+    'position' => 40,
+));
+
+acf_add_local_field_group(array(
+    'key' => 'group_6046984bae3d8',
+    'title' => 'Alert Bar',
+    'fields' => array(
+        array(
+            'key' => 'field_604698529b3bb',
+            'label' => '',
+            'name' => 'content',
+            'type' => 'wysiwyg',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'tabs' => 'visual',
+            'toolbar' => 'basic',
+            'media_upload' => 0,
+            'delay' => 0,
+        ),
+    ),
+    'location' => array(
+        array(
+            array(
+                'param' => 'options_page',
+                'operator' => '==',
+                'value' => 'alert',
+            ),
+        ),
+    ),
+    'menu_order' => 0,
+    'position' => 'normal',
+    'style' => 'seamless',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => true,
+    'description' => '',
+));
+
+endif;
+// End Alert Bar Options
+
 // Start Progressive Web App
 if( function_exists('acf_add_options_page') && function_exists('acf_add_local_field_group') ):
 

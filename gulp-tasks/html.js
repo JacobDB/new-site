@@ -69,7 +69,7 @@ module.exports = {
                 // replace variables
                 .pipe(TEMPLATE({
                     name: JSON_DATA.name,
-                    pwa_name: JSON_DATA.progressiveWebApp.name + (!plugins.argv.dist ? " - DEV" : ""),
+                    pwa_name: JSON_DATA.progressiveWebApp.name,
                     pwa_short_name: JSON_DATA.progressiveWebApp.short_name,
                     pwa_theme_color: JSON_DATA.progressiveWebApp.theme_color,
                     description: JSON_DATA.description,

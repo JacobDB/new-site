@@ -8,19 +8,6 @@
 
 /* These styles are intended to be global */
 
-// Vendor
-
-$theme: custom;
-$font-body: "Open Sans", sans-serif;
-
-@import "gutenberg-web-type/src/style/gutenberg";
-
-// Custom
-
-.btnToggleGrid {
-    background-image: url("../media/vendor/gutenberg-grid-icons.png");
-}
-
 a[href^="//"]::after {
     content: " (" attr(href) ")";
     font-size: 80%;
