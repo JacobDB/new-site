@@ -92,7 +92,7 @@ class __gulp_init_namespace___menu_walker extends Walker_Nav_Menu {
      *
      * @return void
      */
-    public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0): void {
+    public function start_el(&$output, $item, $depth = 0,  $args = [], $id = 0): void {
         $id_prefix = isset($this->params["id_prefix"]) ? $this->params["id_prefix"] : "menu-item-";
         $features  = isset($this->params["features"]) ? $this->params["features"] : [];
 

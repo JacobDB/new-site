@@ -18,7 +18,7 @@ function __gulp_init_namespace___create_resource_post_type(): void {
         "slug"     => "resource",
     ]);
 
-    register_extended_taxonomy( "resource_tag", "resource", [
+    register_extended_taxonomy("resource_tag", "resource", [
         "hierarchical" => false,
     ],
     [
