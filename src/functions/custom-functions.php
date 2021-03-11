@@ -362,8 +362,8 @@ function __gulp_init_namespace___get_the_excerpt(int $id = 0, array $options = [
     /**
      * Get the excerpt and content, stripping them both of shortcodes
      */
-    $excerpt = strip_shortcodes($post_object->post_excerpt);
-    $content = strip_shortcodes($post_object->post_content);
+    $excerpt = trim(wp_strip_all_tags(strip_shortcodes($post_object->post_excerpt)));
+    $content = trim(wp_strip_all_tags(strip_shortcodes($post_object->post_content)));
 
     /**
      * If excerpt is empty, create one from the content
