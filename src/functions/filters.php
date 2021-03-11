@@ -61,11 +61,11 @@ add_filter("login_headertext", "__gulp_init_namespace___login_logo_title");
 /**
  * Replace content with a password form if a post is password protected
  *
- * @param  object $post_object
+ * @param  WP_Post $post_object
  *
  * @return void
  */
-function __gulp_init_namespace___enable_post_password_protection(object $post_object): void {
+function __gulp_init_namespace___enable_post_password_protection(WP_Post $post_object): void {
     if (post_password_required($post_object->ID)) {
         $post_object->post_content = get_the_password_form();
     }
@@ -861,10 +861,10 @@ add_filter("supercache_wp_config_line", "__gulp_init_namespace___wp_super_cache_
  * Add `the_content` filters to `comment_text`
  *
  * @param string $comment_text
- * @param object|null $comment
+ * @param WP_Comment|null $comment
  * @return string
  */
-function __gulp_init_namespace___comment_text_the_content(string $comment_text, ?object $comment = null): string {
+function __gulp_init_namespace___comment_text_the_content(string $comment_text, ?WP_Comment $comment = null): string {
     return apply_filters("the_content", $comment_text);
 }
 add_filter("comment_text", "__gulp_init_namespace___comment_text_the_content");

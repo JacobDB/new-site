@@ -44,11 +44,11 @@ add_action("after_switch_theme", "__gulp_init_namespace___woocommerce_email_colo
  * Ensure email logo is a reasonable size
  *
  * @param string $css
- * @param object $email
+ * @param WC_Email $email
  *
  * @return string
  */
-function __gulp_init_namespace___woocommerce_email_styles(string $css, object $email): string {
+function __gulp_init_namespace___woocommerce_email_styles(string $css, WC_Email $email): string {
     return "{$css} #template_header_image img { width: 300px; }";
 }
 add_filter("woocommerce_email_styles", "__gulp_init_namespace___woocommerce_email_styles", 10, 2);
@@ -102,11 +102,11 @@ add_filter("the_content", "__gulp_init_namespace___woocommerce_the_content_wrapp
  * Remove `text` class from quantity fields
  *
  * @param array $classes
- * @param object $product
+ * @param WC_Product $product
  *
  * @return array
  */
-function __gulp_init_namespace___woocommerce_quantity_input_classes(array $classes, object $product): array {
+function __gulp_init_namespace___woocommerce_quantity_input_classes(array $classes, WC_Product $product): array {
     if (($key = array_search("text", $classes)) !== false) {
         unset($classes[$key]);
     }
@@ -119,11 +119,11 @@ add_action("woocommerce_quantity_input_classes", "__gulp_init_namespace___woocom
  * Add `:` after product attribute titles
  *
  * @param array $product_attributes
- * @param object $product
+ * @param WC_Product $product
  *
  * @return array
  */
-function __gulp_init_namespace___woocommerce_display_product_attributes(array $product_attributes, object $product): array {
+function __gulp_init_namespace___woocommerce_display_product_attributes(array $product_attributes, WC_Product $product): array {
     if ($product_attributes) {
         foreach ($product_attributes as $key => $attribute) {
             $product_attributes[$key]["label"] = "{$product_attributes[$key]["label"]}:";

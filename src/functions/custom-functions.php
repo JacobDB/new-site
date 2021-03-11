@@ -525,7 +525,7 @@ function __gulp_init_namespace___are_dates_sequential(string $date_start, string
  *
  * @return string  A message detailing that no posts could be found for the current context
  */
-function __gulp_init_namespace___get_no_posts_message(?object $queried_object): string {
+function __gulp_init_namespace___get_no_posts_message($queried_object): string {
     if (is_post_type_archive() && isset($queried_object->labels->name)) {
         $post_type_label = strtolower($queried_object->labels->name);
     } elseif (is_archive() && isset($queried_object->taxonomy)) {
