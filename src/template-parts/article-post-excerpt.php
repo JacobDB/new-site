@@ -16,7 +16,7 @@ $excerpt   = isset($this->vars["excerpt"]) ? $this->vars["excerpt"] : ($post ? _
                 <?php if ($title): ?>
                     <h3 class="article__title title<?php if ($light): ?> __light<?php endif; ?>">
                         <?php if ($permalink): ?>
-                            <a class="text__link link<?php if ($light): ?> link--inherit<?php endif; ?>" href="<?php echo esc_url($permalink); ?>">
+                            <a class="title__link link<?php if ($light): ?> link--inherit<?php endif; ?>" href="<?php echo esc_url($permalink); ?>">
                         <?php endif; ?>
 
                         <?php echo $title; ?>
