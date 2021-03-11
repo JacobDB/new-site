@@ -345,6 +345,7 @@ $wc_font: $body-font;
     }
 
     & {
+        display: block;
         font-family: $wc_font;
     }
 }
