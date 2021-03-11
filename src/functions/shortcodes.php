@@ -94,6 +94,8 @@ function __gulp_init_namespace___accordion_shortcode($atts, string $content= "")
         ], $atts
     ));
 
+    $content = do_shortcode($content);
+
     return <<<EOF
 <h3 class="handorgel__header">
     <button class="handorgel__header__button">
