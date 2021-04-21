@@ -663,3 +663,12 @@ function __gulp_init_namespace___imgs_have_alts(string $content): bool {
 
     return true;
 }
+
+/**
+ * Check whether the current page is the login screen
+ *
+ * @return boolean
+ */
+function __gulp_init_namespace___is_wp_login(): bool {
+    return stripos($_SERVER["SCRIPT_NAME"], strrchr(wp_login_url(), "/")) !== false;
+}

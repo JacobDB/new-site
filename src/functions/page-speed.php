@@ -121,7 +121,7 @@ function __gulp_init_namespace___make_styles_async(string $tag, string $handle, 
     global $pagenow;
     global $template;
 
-    $is_login     = (isset($_SERVER["SCRIPT_URI"]) && $_SERVER["SCRIPT_URI"] === wp_login_url()) || $pagenow === "wp-login.php";
+    $is_login     = __gulp_init_namespace___is_wp_login();
     $critical_css = $template ? __gulp_init_namespace___get_critical_css($template) : false;
     $is_external  = __gulp_init_namespace___is_external_url($src);
     $is_other     = __gulp_init_namespace___is_other_asset($src);
