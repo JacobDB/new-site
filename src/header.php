@@ -10,6 +10,8 @@
                 <?php _e("Skip to content", "__gulp_init_namespace__"); ?>
             </a>
 
+            <?php get_extended_template_part("layout", "alert"); ?>
+
             <header class="header-block">
                 <div class="header__inner">
                     <div class="header__row row row--padded-tight row--align-center">
