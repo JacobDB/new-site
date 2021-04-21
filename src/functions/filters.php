@@ -940,3 +940,21 @@ function __gulp_init_namespace___alt_tag_notice(): void {
 
 }
 add_action("admin_notices", "__gulp_init_namespace___alt_tag_notice");
+
+/**
+ * Add "crossorigin='anonymous'" to external stylesheets
+ *
+ * @param string $html
+ * @param string $handle
+ * @param string $href
+ * @param string $media
+ * @return string
+ */
+function __gulp_init_namespace___crossorigin_external_stylesheets(string $html, string $handle, string $href, string $media): string {
+    if (__gulp_init_namespace___is_external_url($href)) {
+        $html = preg_replace("/^(<link)/", "$1 crossorigin='anonymous'", $html);
+    }
+
+    return $html;
+}
+add_filter("style_loader_tag", "__gulp_init_namespace___crossorigin_external_stylesheets", 10, 4);
