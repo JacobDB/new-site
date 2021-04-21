@@ -7,11 +7,12 @@
 /* stylelint-disable selector-class-pattern, selector-max-id, selector-max-type, selector-no-qualifying-type */
 
 $tribe_primary: color("primary");
-$tribe_foreground: #141827;
-$tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "Roboto", "Arial", sans-serif; // stylelint-disable-line
+$tribe_foreground: color("foreground");
+$tribe_font: $body-font;
 
 /* container */
 
+#tribe-events-pg-template,
 .tribe-events .tribe-events-l-container,
 .tribe-common--breakpoint-medium.tribe-events .tribe-events-l-container {
     & {
@@ -30,6 +31,14 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
 @keyframes a {
     50% {
         background-color: $tribe_primary;
+    }
+}
+
+/* icons */
+
+.tribe-common .tribe-common-c-svgicon {
+    & {
+        color: $tribe_primary;
     }
 }
 
@@ -72,6 +81,59 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
     }
 }
 
+/* links */
+
+.tribe-common a {
+    &,
+    &:active,
+    &:focus,
+    &:hover,
+    &:visited {
+        color: $tribe_primary;
+    }
+}
+
+.tribe-common .tribe-common-anchor {
+    &:active,
+    &:focus,
+    &:hover {
+        border-bottom-color: $tribe_foreground;
+    }
+}
+
+.tribe-common .tribe-common-anchor-thin-alt {
+    & {
+        border-bottom-color: $tribe_primary;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+        border-bottom-color: currentColor;
+        color: $tribe_primary;
+    }
+}
+
+.tribe-events-pro .tribe-events-pro-organizer__meta-email-link,
+.tribe-events-pro .tribe-events-pro-organizer__meta-website-link {
+    & {
+        border-bottom-width: 1px;
+        color: $tribe_primary;
+    }
+}
+
+.tribe-events-pro .tribe-events-pro-week-grid__header-column--current .tribe-events-pro-week-grid__header-column-daynum,
+.tribe-events-pro .tribe-events-pro-week-grid__header-column--current .tribe-events-pro-week-grid__header-column-daynum-link {
+    & {
+        color: $tribe_primary;
+    }
+
+    &:focus,
+    &:hover {
+        color: transparentize($tribe_primary, 0.2);
+    }
+}
+
 /* tooltip */
 
 .tribe-events-tooltip .tribe-events-event-body {
@@ -81,12 +143,6 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
 }
 
 /* featured */
-
-.tribe-common .tribe-common-svgicon--featured {
-    & {
-        background-image: svg-load("../media/vendor/tribe-featured.svg", fill=#{$tribe_primary});
-    }
-}
 
 .tribe-common--breakpoint-medium.tribe-events .tribe-events-calendar-list__event-datetime-featured-text {
     & {
@@ -99,12 +155,6 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
 .tribe-events-notices {
     & {
         font-family: $tribe_font;
-    }
-}
-
-.tribe-events .tribe-events-c-messages__message--notice::before {
-    & {
-        background-image: svg-load("../media/vendor/tribe-calendar-x.svg", stroke=#{$tribe_primary});
     }
 }
 
@@ -128,20 +178,6 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
 }
 
 /* bar */
-
-.tribe-events .tribe-events-c-search__input-control--keyword-focus .tribe-events-c-search__input,
-.tribe-events .tribe-events-c-search__input-control--keyword .tribe-events-c-search__input:focus {
-    & {
-        background-image: svg-load("../media/vendor/tribe-search.svg", fill=#{$tribe_primary});
-    }
-}
-
-.tribe-events .tribe-events-c-search__input-control--location-focus .tribe-events-c-search__input,
-.tribe-events .tribe-events-c-search__input-control--location .tribe-events-c-search__input:focus {
-    & {
-        background-image: svg-load("../media/vendor/tribe-location.svg", fill=#{$tribe_primary});
-    }
-}
 
 .tribe-events .tribe-events-c-events-bar__search-button::before {
     & {
@@ -169,20 +205,35 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
         color: $tribe_primary;
     }
 
-    &::before {
-        background-image: svg-load("../media/vendor/tribe-plus.svg", stroke=#{$tribe_primary});
-    }
-
     &:active,
     &:focus,
     &:hover {
-        & {
-            background-color: $tribe_primary;
-        }
+        background-color: $tribe_primary;
+    }
+}
 
-        &::before {
-            background-image: svg-load("../media/vendor/tribe-plus.svg", stroke=#FFFFFF);
-        }
+.tribe-events .tribe-events-c-ical__link-icon-svg {
+    & {
+        color: $tribe_primary;
+    }
+}
+
+.tribe-events-cal-links .tribe-events-gcal,
+.tribe-events-cal-links .tribe-events-ical {
+    & {
+        @extend .button;
+    }
+
+    &:not(:last-child) {
+        margin-right: remify(20, 16);
+    }
+}
+
+/* pagination */
+
+.tribe-events-sub-nav {
+    & {
+        padding: 0;
     }
 }
 
@@ -247,12 +298,6 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
 .tribe-events .tribe-events-calendar-month__day-cell--selected .tribe-events-calendar-month__day-date {
     & {
         color: #FFFFFF; // this isn't ideal, as it's replicating the default, but it's the simplest solution
-    }
-}
-
-.tribe-events .tribe-events-calendar-month__mobile-events-icon--featured {
-    & {
-        background-image: svg-load("../media/vendor/tribe-featured.svg", fill=#{$tribe_primary});
     }
 }
 
@@ -349,6 +394,18 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
     }
 }
 
+.tribe-events-content a {
+    & {
+        @extend .link;
+
+        border-bottom: 0 !important;
+    }
+
+    &.button {
+        @extend .button;
+    }
+}
+
 .single-tribe_events .tribe-events-event-meta dl {
     & {
         font-family: $tribe_font;
@@ -367,6 +424,12 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
 
     &:visited {
         color: darken(desaturate(adjust-hue($tribe_primary, 5), 46.875), 47.451);
+    }
+}
+
+.tribe-events-related-events-title {
+    & {
+        font-family: $tribe_font;
     }
 }
 
@@ -392,20 +455,46 @@ $tribe_font: "Helvetica Neue", "Helvetica", -apple-system, BlinkMacSystemFont, "
     & {
         color: $tribe_foreground;
         font-family: $tribe_font;
+        padding: 0;
     }
-}
 
-#tribe-events-footer .tribe-events-sub-nav a,
-#tribe-events-header .tribe-events-sub-nav a {
-    & {
+    a {
         color: $tribe_primary;
     }
 }
 
-/* related events */
+/* Pro: Week */
 
-.tribe-events-related-events-title {
+.tribe-events-pro .tribe-events-pro-week-day-selector__day--active {
     & {
-        font-family: $tribe_font;
+        border-color: $tribe_primary;
+    }
+}
+
+.tribe-events-pro .tribe-events-pro-week-day-selector__events-icon {
+    & {
+        background-color: $tribe_primary;
+    }
+}
+
+.tribe-events-pro .tribe-events-pro-week-grid__event-link {
+    .tribe-events-pro-week-grid__event-link-inner {
+        background-color: transparentize($tribe_primary, 0.9);
+    }
+
+    &:focus .tribe-events-pro-week-grid__event-link-inner,
+    &:hover .tribe-events-pro-week-grid__event-link-inner {
+        background-color: transparentize($tribe_primary, 0.8);
+    }
+}
+
+/* Pro: Organizer */
+
+.tribe-events-pro .tribe-events-pro-organizer__meta-email,
+.tribe-events-pro .tribe-events-pro-organizer__meta-phone,
+.tribe-events-pro .tribe-events-pro-organizer__meta-website {
+    & {
+        align-items: center;
+        display: flex;
     }
 }
