@@ -4,6 +4,244 @@
 \* ------------------------------------------------------------------------ */
 
 /**
+ * Get various PWA sizes by platform
+ *
+ * @param string $platform
+ * @param string $purpose
+ * @return array
+ */
+function __gulp_init_namespace___get_pwa_sizes(string $platform, string $purpose = "any"): array {
+    $data = [];
+
+    switch ($platform) {
+        case "android": {
+            switch ($purpose) {
+                case "launcher": {
+                    /**
+                     * @link https://pixplicity.com/dp-px-converter (48px @ mdpi)
+                     */
+                    $data = [
+                        "ldpi" => [
+                            "dimensions" => [36, 36],
+                            "ratio" => 1,
+                        ],
+                        "mdpi" => [
+                            "dimensions" => [48, 48],
+                            "ratio" => 1,
+                        ],
+                        "hdpi" => [
+                            "dimensions" => [72, 72],
+                            "ratio" => 1,
+                        ],
+                        "xhdpi" => [
+                            "dimensions" => [96, 96],
+                            "ratio" => 1,
+                        ],
+                        "xxhdpi" => [
+                            "dimensions" => [144, 144],
+                            "ratio" => 1,
+                        ],
+                        "xxxhdpi" => [
+                            "dimensions" => [192, 192],
+                            "ratio" => 1,
+                        ],
+                    ];
+                    break;
+                }
+                case "notification": {
+                    /**
+                     * @link https://pixplicity.com/dp-px-converter (24px @ mdpi)
+                     */
+                    $data = [
+                        "ldpi" => [
+                            "dimensions" => [18, 18],
+                            "ratio" => 1,
+                        ],
+                        "mdpi" => [
+                            "dimensions" => [24, 24],
+                            "ratio" => 1,
+                        ],
+                        "hdpi" => [
+                            "dimensions" => [36, 36],
+                            "ratio" => 1,
+                        ],
+                        "xhdpi" => [
+                            "dimensions" => [48, 48],
+                            "ratio" => 1,
+                        ],
+                        "xxhdpi" => [
+                            "dimensions" => [72, 72],
+                            "ratio" => 1,
+                        ],
+                        "xxxhdpi" => [
+                            "dimensions" => [96, 96],
+                            "ratio" => 1,
+                        ],
+                    ];
+                    break;
+                }
+                case "splash": {
+                    /**
+                     * @link https://web.dev/splash-screen/
+                     */
+                    $data = [
+                        "Launcher" => [
+                            "dimensions" => [512, 512],
+                            "ratio" => 1,
+                        ],
+                    ];
+                    break;
+                }
+            }
+            break;
+        }
+        case "ios": {
+            switch ($purpose) {
+                case "notification": {
+                    /**
+                     * @link https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/#spotlight-and-settings-icons
+                     */
+                    $data = [
+                        "iPhone" => [
+                            "dimensions" => [60, 60],
+                            "ratio" => 3,
+                        ],
+                        "iPad Pro, iPad, iPad mini" => [
+                            "dimensions" => [40, 40],
+                            "ratio" => 2,
+                        ],
+                    ];
+                    break;
+                }
+                case "settings": {
+                    /**
+                     * @link https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/#spotlight-and-settings-icons
+                     */
+                    $data = [
+                        "iPhone" => [
+                            "dimensions" => [87, 87],
+                            "ratio" => 3,
+                        ],
+                        "iPad Pro, iPad, iPad mini" => [
+                            "dimensions" => [58, 58],
+                            "ratio" => 2,
+                        ],
+                    ];
+                    break;
+                }
+                case "splash": {
+                    /**
+                     * @link https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/#device-screen-sizes-and-orientations
+                     */
+                    $data = [
+                        '12.9" iPad Pro' => [
+                            "dimensions" => [2048, 2732],
+                            "ratio" => 2,
+                        ],
+                        '11" iPad Pro, 10.5" iPad Pro' => [
+                            "dimensions" => [1668, 2388],
+                            "ratio" => 2,
+                        ],
+                        '9.7" iPad Pro, 7.9" iPad mini, 9.7" iPad Air, 9.7" iPad' => [
+                            "dimensions" => [1536, 2048],
+                            "ratio" => 2,
+                        ],
+                        '10.5" iPad Air' => [
+                            "dimensions" => [1668, 2224],
+                            "ratio" => 2,
+                        ],
+                        '10.2" iPad' => [
+                            "dimensions" => [1620, 2160],
+                            "ratio" => 2,
+                        ],
+                        "iPhone 12 Pro Max" => [
+                            "dimensions" => [1284, 2778],
+                            "ratio" => 3,
+                        ],
+                        "iPhone 12 Pro, iPhone 12" => [
+                            "dimensions" => [1170, 2532],
+                            "ratio" => 3,
+                        ],
+                        "iPhone 12 mini, iPhone 11 Pro, iPhone XS, iPhone X" => [
+                            "dimensions" => [1125, 2436],
+                            "ratio" => 3,
+                        ],
+                        "iPhone 11 Pro Max, iPhone XS Max" => [
+                            "dimensions" => [1242, 2688],
+                            "ratio" => 3,
+                        ],
+                        "iPhone 11, iPhone XR" => [
+                            "dimensions" => [828, 1792],
+                            "ratio" => 2,
+                        ],
+                        "iPhone 8 Plus, iPhone 7 Plus, iPhone 6s Plus, iPhone 6 Plus" => [
+                            "dimensions" => [1080, 1920],
+                            "ratio" => 3,
+                        ],
+                        'iPhone 8, iPhone 7, iPhone 6s, iPhone 6, 4.7" iPhone SE' => [
+                            "dimensions" => [750, 1334],
+                            "ratio" => 2,
+                        ],
+                        '4" iPhone SE, iPod touch 5th generation and later' => [
+                            "dimensions" => [640, 1136],
+                            "ratio" => 2,
+                        ],
+                    ];
+                    break;
+                }
+                case "spotlight": {
+                    /**
+                     * @link https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/#spotlight-and-settings-icons
+                     */
+                    $data = [
+                        "iPhone" => [
+                            "dimensions" => [120, 120],
+                            "ratio" => 3,
+                        ],
+                        "iPad Pro, iPad, iPad mini" => [
+                            "dimensions" => [80, 80],
+                            "ratio" => 2,
+                        ],
+                    ];
+                    break;
+                }
+                case "touch": {
+                    /**
+                     * @link https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/app-icon/#app-icon-sizes
+                     */
+                    $data = [
+                        "iPhone (3x)" => [
+                            "dimensions" => [180, 180],
+                            "ratio" => 3,
+                        ],
+                        "iPhone (2x)" => [
+                            "dimensions" => [120, 120],
+                            "ratio" => 2,
+                        ],
+                        "iPad Pro" => [
+                            "dimensions" => [167, 167],
+                            "ratio" => 2,
+                        ],
+                        "iPad, iPad mini" => [
+                            "dimensions" => [152, 152],
+                            "ratio" => 2,
+                        ],
+                        "App Store" => [
+                            "dimensions" => [1024, 1024],
+                            "ratio" => 1,
+                        ],
+                    ];
+                    break;
+                }
+            }
+            break;
+        }
+    }
+
+    return $data;
+}
+
+/**
  * Construct a manifest when the user visits /manifest.json
  *
  * @return void
@@ -15,6 +253,48 @@ function __gulp_init_namespace___construct_manifest(): void {
         $background_color = __gulp_init_namespace___get_field("background_color", "pwa");
         $theme_color      = __gulp_init_namespace___get_field("theme_color", "pwa");
 
+        $icons = [];
+
+        $icon_sizes = [
+            "android" => [
+                "any"        => [
+                    "splash",
+                ],
+                "maskable"   => [
+                    "launcher",
+                ],
+                "monochrome" => [
+                    "notification",
+                ],
+            ],
+            "ios" => [
+                "any" =>  [
+                    "notification",
+                    "settings",
+                    "spotlight",
+                    "touch",
+                ],
+            ],
+        ];
+
+        foreach ($icon_sizes as $platform => $size) {
+            foreach ($size as $purpose => $names) {
+                foreach ($names as $name) {
+                    $data = __gulp_init_namespace___get_pwa_sizes($platform, $name);
+
+                    foreach ($data as $details) {
+                        $icons[] = [
+                            "src"      => get_theme_file_uri("assets/media/{$platform}/{$name}-icon-{$details["dimensions"][0]}x{$details["dimensions"][1]}.png"),
+                            "type"     => "image/png",
+                            "sizes"    => "{$details["dimensions"][0]}x{$details["dimensions"][1]}",
+                            "platform" => $platform,
+                            "purpose"  => $purpose,
+                        ];
+                    }
+                }
+            }
+        }
+
         $manifest = [
             "start_url"        => "/",
             "display"          => "standalone",
@@ -22,169 +302,7 @@ function __gulp_init_namespace___construct_manifest(): void {
             "short_name"       => $short_name ? $short_name : "<%= pwa_short_name %>",
             "background_color" => $background_color ? $background_color : "<%= pwa_theme_color %>",
             "theme_color"      => $theme_color ? $theme_color : "<%= pwa_theme_color %>",
-            "icons"            => [
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/splash-icon-512x512.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "512x512",
-                    "platform" => "android",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/launcher-icon-192x192.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "192x192",
-                    "platform" => "android",
-                    "purpose"  => "maskable",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/launcher-icon-144x144.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "144x144",
-                    "platform" => "android",
-                    "purpose"  => "maskable",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/launcher-icon-96x96.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "96x96",
-                    "platform" => "android",
-                    "purpose"  => "maskable",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/launcher-icon-72x72.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "72x72",
-                    "platform" => "android",
-                    "purpose"  => "maskable",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/launcher-icon-48x48.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "48x48",
-                    "platform" => "android",
-                    "purpose"  => "maskable",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/notification-icon-96x96.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "96x96",
-                    "platform" => "android",
-                    "purpose"  => "monochrome",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/notification-icon-72x72.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "72x72",
-                    "platform" => "android",
-                    "purpose"  => "monochrome",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/notification-icon-48x48.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "48x48",
-                    "platform" => "android",
-                    "purpose"  => "monochrome",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/notification-icon-36x36.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "36x36",
-                    "platform" => "android",
-                    "purpose"  => "monochrome",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/android/notification-icon-24x24.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "24x24",
-                    "platform" => "android",
-                    "purpose"  => "monochrome",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/touch-icon-1024x1024.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "1024x1024",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/touch-icon-180x180.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "180x180",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/touch-icon-167x167.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "167x167",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/touch-icon-152x152.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "152x152",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/touch-icon-120x120.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "120x120",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/touch-icon-76x76.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "76x76",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/spotlight-icon-120x120.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "120x120",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/spotlight-icon-80x80.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "80x80",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/settings-icon-87x87.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "87x87",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/settings-icon-58x58.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "58x58",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/notification-icon-60x60.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "60x60",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-                [
-                    "src"      => get_theme_file_uri("assets/media/ios/notification-icon-40x40.png"),
-                    "type"     => "image/png",
-                    "sizes"    => "40x40",
-                    "platform" => "ios",
-                    "purpose"  => "any",
-                ],
-            ],
+            "icons"            => $icons,
         ];
 
         wp_send_json($manifest);
@@ -210,122 +328,32 @@ add_action("wp_head", "__gulp_init_namespace___add_pwa_meta_to_head", 0);
  * @return void
  */
 function __gulp_init_namespace___add_ios_meta_to_head(): void {
-    // declare web app support
+    /**
+     * Declare web app support
+     */
     echo "<meta name='apple-mobile-web-app-capable' content='yes' />\n";
 
-    // set status bar color
+    /**
+     * Set status bar color
+     */
     echo "<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />\n";
 
-    // set home screen icons
-    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-76x76.png") . "' sizes='76x76' />\n";
-    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-120x120.png") . "' sizes='120x120' />\n";
-    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-152x152.png") . "' sizes='152x152' />\n";
-    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-167x167.png") . "' sizes='167x167' />\n";
-    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-180x180.png") . "' sizes='180x180' />\n";
-    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-1024x1024.png") . "' sizes='1024x1024' />\n";
+    /**
+     * Add icons
+     */
+    foreach (__gulp_init_namespace___get_pwa_sizes("ios", "touch") as $data) {
+        echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-{$data["dimensions"][0]}x{$data["dimensions"][1]}.png") . "' sizes='{$data["dimensions"][0]}x{$data["dimensions"][1]}' />\n";
+    }
 
-    // array of splash screen images for each iOS device
-    $splash_screens = [
-        "iPhone 4 (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-640x960.png"),
-            "media" => "(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-        ],
-        "iPhone 4 (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-960x640.png"),
-            "media" => "(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-        ],
-        "iPhone 5 (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-640x1136.png"),
-            "media" => "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-        ],
-        "iPhone 5 (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1136x640.png"),
-            "media" => "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-        ],
-        "iPhone 6, 6S, 7, 8 (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-750x1334.png"),
-            "media" => "(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-        ],
-        "iPhone 6, 6S, 7, 8 (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1334x750.png"),
-            "media" => "(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-        ],
-        "iPhone 6+, 6S+, 7+, 8+ (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1242x2208.png"),
-            "media" => "(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)",
-        ],
-        "iPhone 6+, 6S+, 7+, 8+ (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-2208x1242.png"),
-            "media" => "(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)",
-        ],
-        "iPhone X, XS (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1125x2436.png"),
-            "media" => "(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)",
-        ],
-        "iPhone X, XS (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-2436x1125.png"),
-            "media" => "(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)",
-        ],
-        "iPhone XR (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-828x1792.png"),
-            "media" => "(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-        ],
-        "iPhone XR (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1792x828.png"),
-            "media" => "(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-        ],
-        "iPhone XS Max (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1242x2688.png"),
-            "media" => "(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)",
-        ],
-        "iPhone XS Max (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-2688x1242.png"),
-            "media" => "(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)",
-        ],
-        "iPad 1, 2, Mini (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-768x1024.png"),
-            "media" => "(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: portrait)",
-        ],
-        "iPad 1, 2, Mini (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1024x768.png"),
-            "media" => "(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: landscape)",
-        ],
-        "iPad 3, 4, Air, Mini 2, Pro 9.7 (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1536x2048.png"),
-            "media" => "(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-        ],
-        "iPad 3, 4, Air, Mini 2, Pro 9.7 (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-2048x1536.png"),
-            "media" => "(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-        ],
-        "iPad Pro 10.5 (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1668x2224.png"),
-            "media" => "(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-        ],
-        "iPad Pro 10.5 (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-2224x1668.png"),
-            "media" => "(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-        ],
-        "iPad Pro 11 (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-1668x2388.png"),
-            "media" => "(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-        ],
-        "iPad Pro 11 (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-2388x1668.png"),
-            "media" => "(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-        ],
-        "iPad Pro 12.9 (portrait)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-2048x2732.png"),
-            "media" => "(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)",
-        ],
-        "iPad Pro 12.9 (landscape)" => [
-            "href"  => get_theme_file_uri("assets/media/ios/startup-image-2732x2048.png"),
-            "media" => "(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
-        ],
-    ];
+    /**
+     * Add splash screens
+     */
+    foreach (__gulp_init_namespace___get_pwa_sizes("ios", "splash") as $name => $data) {
+        $media_query_x = round($data["dimensions"][0] / $data["ratio"]);
+        $media_query_y = round($data["dimensions"][1] / $data["ratio"]);
 
-    foreach ($splash_screens as $splash_screen) {
-        echo "<link rel='apple-touch-startup-image' href='{$splash_screen["href"]}' media='{$splash_screen["media"]}' />\n";
+        echo "<link rel='apple-touch-startup-image' href='" . get_theme_file_uri("assets/media/ios/startup-image-{$data["dimensions"][0]}x{$data["dimensions"][1]}.png") . "' media='(device-width: {$media_query_x}px) and (device-height: {$media_query_y}px) and (-webkit-device-pixel-ratio: {$data["ratio"]}) and (orientation: portrait)' />\n";
+        echo "<link rel='apple-touch-startup-image' href='" . get_theme_file_uri("assets/media/ios/startup-image-{$data["dimensions"][1]}x{$data["dimensions"][0]}.png") . "' media='(device-width: {$media_query_y}px) and (device-height: {$media_query_x}px) and (-webkit-device-pixel-ratio: {$data["ratio"]}) and (orientation: landscape)' />\n";
     }
 }
 add_action("admin_head", "__gulp_init_namespace___add_ios_meta_to_head", 0);

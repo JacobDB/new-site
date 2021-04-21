@@ -849,7 +849,7 @@ function __gulp_init_namespace___wp_super_cache_disable_ie_setting(): void {
 }
 add_action("init", "__gulp_init_namespace___wp_super_cache_disable_ie_setting");
 
-if (function_exits("add_cacheaction")) {
+if (function_exists("add_cacheaction")) {
     /**
      * Exclude IE from caching or being served cached pages
      *
