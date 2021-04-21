@@ -217,11 +217,12 @@ function __gulp_init_namespace___add_ios_meta_to_head(): void {
     echo "<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />\n";
 
     // set home screen icons
-    echo "<link href='" . get_theme_file_uri("assets/media/ios/touch-icon-76x76.png") . "' rel='apple-touch-icon' sizes='76x76' />\n";
-    echo "<link href='" . get_theme_file_uri("assets/media/ios/touch-icon-120x120.png") . "' rel='apple-touch-icon' sizes='120x120' />\n";
-    echo "<link href='" . get_theme_file_uri("assets/media/ios/touch-icon-152x152.png") . "' rel='apple-touch-icon' sizes='152x152' />\n";
-    echo "<link href='" . get_theme_file_uri("assets/media/ios/touch-icon-180x180.png") . "' rel='apple-touch-icon' sizes='180x180' />\n";
-    echo "<link href='" . get_theme_file_uri("assets/media/ios/touch-icon-1024x1024.png") . "' rel='apple-touch-icon' sizes='1024x1024' />\n";
+    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-76x76.png") . "' sizes='76x76' />\n";
+    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-120x120.png") . "' sizes='120x120' />\n";
+    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-152x152.png") . "' sizes='152x152' />\n";
+    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-167x167.png") . "' sizes='167x167' />\n";
+    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-180x180.png") . "' sizes='180x180' />\n";
+    echo "<link rel='apple-touch-icon' href='" . get_theme_file_uri("assets/media/ios/touch-icon-1024x1024.png") . "' sizes='1024x1024' />\n";
 
     // array of splash screen images for each iOS device
     $splash_screens = [
@@ -324,7 +325,7 @@ function __gulp_init_namespace___add_ios_meta_to_head(): void {
     ];
 
     foreach ($splash_screens as $splash_screen) {
-        echo "<link href='{$splash_screen["href"]}' media='{$splash_screen["media"]}' rel='apple-touch-startup-image' />\n";
+        echo "<link rel='apple-touch-startup-image' href='{$splash_screen["href"]}' media='{$splash_screen["media"]}' />\n";
     }
 }
 add_action("admin_head", "__gulp_init_namespace___add_ios_meta_to_head", 0);

@@ -9,7 +9,7 @@
  * @return void
  */
 function __gulp_init_namespace___add_favicon_meta_to_head(): void {
-    echo "<link href='" . get_theme_file_uri("assets/media/logo-favicon.png") . "' rel='shortcut icon' />\n";
+    echo "<link rel='shortcut icon' href='" . get_theme_file_uri("assets/media/logo-favicon.png") . "' />\n";
 }
 add_action("admin_head", "__gulp_init_namespace___add_favicon_meta_to_head", 0);
 add_action("login_head", "__gulp_init_namespace___add_favicon_meta_to_head", 0);
