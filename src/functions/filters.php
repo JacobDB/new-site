@@ -152,6 +152,10 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
             $new_classes = "";
 
             if (preg_match("/button/i", $existing_classes)) {
+                if (preg_match("/wp-block-button__link/", $existing_classes)) {
+                    $existing_classes = preg_replace("/wp-block-button__link/", "button", $existing_classes);
+                }
+
                 $new_classes = "user-content__button {$existing_classes}";
             } else {
                 $new_classes = "user-content__link link {$existing_classes}";

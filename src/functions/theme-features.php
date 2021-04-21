@@ -61,6 +61,29 @@ function __gulp_init_namespace___tinymce_button_format(array $init_array): array
 add_filter("tiny_mce_before_init", "__gulp_init_namespace___tinymce_button_format", 10, 1);
 
 /**
+ * Register custom row block styles
+ *
+ * @return void
+ */
+function __gulp_init_namespace___register_block_styles(): void {
+    register_block_style("core/columns", [
+        "name"  => "row-padded",
+        "label" => __("Padded", "__gulp_init_namespace__"),
+    ]);
+
+    register_block_style("core/columns", [
+        "name"  => "row-padded-loose",
+        "label" => __("Padded Loose", "__gulp_init_namespace__"),
+    ]);
+
+    register_block_style("core/columns", [
+        "name"  => "row-padded-tight",
+        "label" => __("Padded Tight", "__gulp_init_namespace__"),
+    ]);
+}
+add_action("admin_init", "__gulp_init_namespace___register_block_styles");
+
+/**
  * Disallow file editing
  */
 if (! defined("DISALLOW_FILE_EDIT")) {
