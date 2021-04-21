@@ -723,6 +723,7 @@ function __gulp_init_namespace___nav_menu_sub_menu(array $menu_items, object $ar
      * Set required values
      */
     $sub_menu["fallback"]  = isset($sub_menu["fallback"])  ? $sub_menu["fallback"]  : "root";
+    $sub_menu["local"]      = isset($sub_menu["local"])      ? $sub_menu["local"]   : false;
     $sub_menu["viewed_id"] = isset($sub_menu["viewed_id"]) ? $sub_menu["viewed_id"] : null;
 
     /**
@@ -757,6 +758,14 @@ function __gulp_init_namespace___nav_menu_sub_menu(array $menu_items, object $ar
         }
 
         /**
+         * Exclude custom items to allow the link to appear multiple times in
+         * one navigation with control over which links are "true" siblings
+         */
+        if ($menu_item->type === "custom") {
+            $is_viewed = false;
+        }
+
+        /**
          * Store the viewed item
          */
         if ($is_viewed) {
@@ -771,42 +780,28 @@ function __gulp_init_namespace___nav_menu_sub_menu(array $menu_items, object $ar
      * Ensure a viewed item was found to prevent infinite loops
      */
     if ($viewed_item) {
+        $viewed_item_ancestors   = [];
+        $viewed_item_descendants = [];
+
         /**
-         * Find the root item
+         * Find the ancestors
          */
         while (intval($root_item->menu_item_parent) !== 0) {
             foreach ($menu_items as $menu_item) {
                 if ($menu_item->ID === intval($root_item->menu_item_parent)) {
-                    $root_item = $menu_item; break;
+                    $root_item = $menu_item;
+                    $viewed_item_ancestors[] = $root_item->ID;
+                    break;
                 }
             }
         }
 
         /**
-         * Mark each menu item with `current_item_descendant` and `current_item_child`
+         * Find the descendants
          */
         foreach ($menu_items as $menu_item) {
-            /**
-             * Add the values to the item
-             */
-            $menu_item->current_item_descendant = null;
-            $menu_item->current_item_child      = intval($menu_item->menu_item_parent) === $viewed_item->ID;
-
-            /**
-             * Determine whether the item is a descendant of the viewed item
-             */
-            $parent_item = $menu_item;
-
-            while (intval($parent_item->menu_item_parent) !== 0) {
-                foreach ($menu_items as $menu_item_2) {
-                    if ($menu_item_2->ID === intval($parent_item->menu_item_parent)) {
-                        $parent_item = $menu_item_2;
-
-                        if (! $menu_item->current_item_ancestor && $parent_item->current) {
-                            $menu_item->current_item_descendant = 1; break;
-                        }
-                    }
-                }
+            if (intval($menu_item->menu_item_parent) === $viewed_item->ID || in_array(intval($menu_item->menu_item_parent), $viewed_item_descendants)) {
+                $viewed_item_descendants[] = $menu_item->ID;
             }
         }
 
@@ -819,17 +814,31 @@ function __gulp_init_namespace___nav_menu_sub_menu(array $menu_items, object $ar
             /**
              * Remove all root menu items, except if the item is part of the viewed tree
              */
-            if ($menu_item->ID !== $viewed_item->ID && ! $menu_item->current_item_ancestor && intval($menu_item->menu_item_parent) === 0) {
+            if (intval($menu_item->menu_item_parent) === 0 && $menu_item->ID !== $viewed_item->ID && ! in_array($menu_item->ID, $viewed_item_ancestors)) {
                 $remove = true;
             }
 
             /**
-             * Only if not viewing the root item, remove items which:
+             * Remove items which:
+             * - Are not the viewed item
              * - Are not children of the root item
              * - Are not children of the viewed items parent
              * - Are not within the currently viewed tree
              */
-            if ($menu_item->ID !== $viewed_item->ID && ! in_array(intval($menu_item->menu_item_parent), [$root_item->ID, intval($viewed_item->menu_item_parent)]) && ! ($menu_item->current || $menu_item->current_item_ancestor || $menu_item->current_item_descendant)) {
+            if ($menu_item->ID !== $viewed_item->ID && ! in_array(intval($menu_item->menu_item_parent), [$root_item->ID, intval($viewed_item->menu_item_parent)]) && ! (in_array($menu_item->ID, $viewed_item_ancestors) || in_array($menu_item->ID, $viewed_item_descendants))) {
+                $remove = true;
+            }
+
+            /**
+             * Remove everything except the local tree if `local` is true
+             *
+             * Only keeps
+             * - The viewed page
+             * - The viewed page's descendants
+             * - The viewed page's parent, if it does not have children
+             * - The viewed page's siblings, if it does not have children
+             */
+            if ($sub_menu["local"] === true && ! ($menu_item->ID === $viewed_item->ID || $menu_item->current_item_descendant || (! in_array("menu-item-has-children", $viewed_item->classes) && (intval($menu_item->current_item_parent) === 1 || intval($menu_item->menu_item_parent) === intval($viewed_item->menu_item_parent))))) {
                 $remove = true;
             }
 
