@@ -8,13 +8,14 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 // get the elements
 const MENU    = document.getElementById("mobile-menu");
+const INNER   = MENU ? MENU.querySelector(".navigation__inner") : null;
 const OVERLAY = document.getElementById("mobile-overlay");
 const TOGGLE  = document.querySelector("[data-toggle=mobile-menu]");
 
 /**
  * Verify that elements exist
  */
-if (MENU !== null && OVERLAY !== null && TOGGLE !== null) {
+if (MENU !== null && INNER !== null && OVERLAY !== null && TOGGLE !== null) {
     /**
      * Check if the menu is active
      */
@@ -51,7 +52,7 @@ if (MENU !== null && OVERLAY !== null && TOGGLE !== null) {
         /**
          * Disable scrolling on the body
          */
-        disableBodyScroll(MENU);
+        disableBodyScroll(INNER);
     };
 
     /**
@@ -76,7 +77,7 @@ if (MENU !== null && OVERLAY !== null && TOGGLE !== null) {
         /**
          * Enable scrolling on the body
          */
-        enableBodyScroll(MENU);
+        enableBodyScroll(INNER);
     };
 
     /**
