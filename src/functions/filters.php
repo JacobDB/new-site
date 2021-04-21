@@ -849,17 +849,24 @@ function __gulp_init_namespace___wp_super_cache_disable_ie_setting(): void {
 }
 add_action("init", "__gulp_init_namespace___wp_super_cache_disable_ie_setting");
 
-/**
- * Ensure IE never loads the cached version of the site
- *
- * @param  string $line
- *
- * @return string
- */
-function __gulp_init_namespace___wp_super_cache_disable_ie_wp_config($line): string {
-    return "if (preg_match('/(Trident|MSIE)/', \$_SERVER['HTTP_USER_AGENT'])) { {$line} }";
+if (function_exits("add_cacheaction")) {
+    /**
+     * Exclude IE from caching or being served cached pages
+     *
+     * @return void
+     */
+    function __gulp_init_namespace___exclude_ie_from_cache(): void {
+        if (! isset( $_SERVER["HTTP_USER_AGENT"])) {
+            return;
+        }
+
+        if (stripos($_SERVER["HTTP_USER_AGENT"], "MSIE" ) || stripos($_SERVER["HTTP_USER_AGENT"], "Trident")) {
+            define("DONOTCACHEPAGE");
+            define("WPSC_SERVE_DISABLED");
+        }
+    }
+    add_cacheaction("add_cacheaction", "__gulp_init_namespace___exclude_ie_from_cache");
 }
-add_filter("supercache_wp_config_line", "__gulp_init_namespace___wp_super_cache_disable_ie_wp_config");
 
 /**
  * Add `the_content` filters to `comment_text`
