@@ -2,13 +2,13 @@
 $post    = isset($this->vars["post"]) ? $this->vars["post"] : false;
 $class   = isset($this->vars["class"]) ? " {$this->vars["class"]}" : "";
 $light   = isset($this->vars["light"]) ? $this->vars["light"] : false;
-$title   = isset($this->vars["title"]) ? $this->vars["title"] : ($post ? $post->post_title : "");
+$title   = isset($this->vars["title"]) ? $this->vars["title"] : ($post ? apply_filters("the_title", $post->post_title, $post->ID) : "");
 $meta    = isset($this->vars["meta"]) ? $this->vars["meta"] : false;
 $content = isset($this->vars["content"]) ? $this->vars["content"] : ($post ? apply_filters("the_content", $post->post_content) : "");
 ?>
 
 <?php if ($title || $content): ?>
-    <article class="article<?php echo $class; ?>">
+    <article class="article article--post-full<?php echo $class; ?>">
 
         <?php if ($title || $meta): ?>
             <header class="article__header">

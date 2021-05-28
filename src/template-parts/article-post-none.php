@@ -5,7 +5,7 @@ $error = isset($this->vars["error"]) ? $this->vars["error"] : false;
 ?>
 
 <?php if ($error): ?>
-    <article class="article<?php echo $class; ?>">
+    <article class="article article--post-none<?php echo $class; ?>">
         <div class="article__content">
             <p class="article__text text<?php if ($light): ?> __light<?php endif; ?>"><?php echo $error; ?></p>
         </div>
