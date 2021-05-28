@@ -81,11 +81,17 @@ add_action("nf_display_enqueue_scripts", "__gulp_init_namespace___ninja_forms_fi
 function __gulp_init_namespace___ninja_forms_fix_wpseo_title(string $title): string {
     global $wpdb;
 
+    $form_id = 0;
+
     if ($public_link_key = get_query_var("nf_public_link")) {
         $query      = $wpdb->prepare("SELECT `parent_id` FROM {$wpdb->prefix}nf3_form_meta WHERE `key` = 'public_link_key' AND `value` = %s", $public_link_key);
         $results    = $wpdb->get_col($query);
         $form_id    = reset($results);
+    } elseif (current_user_can(apply_filters("ninja_forms_admin_all_forms_capabilities", "manage_options")) && isset($_GET["nf_preview_form"])) {
+        $form_id = sanitize_text_field($_GET["nf_preview_form"]);
+    }
 
+    if ($form_id) {
         $query      = $wpdb->prepare("SELECT `title` FROM {$wpdb->prefix}nf3_forms WHERE `id` = %s", $form_id);
         $results    = $wpdb->get_col($query);
         $form_title = reset($results);
