@@ -10,16 +10,16 @@
     }
 }
 
-.article__image {
+.article__figure__image {
     & {
         display: block;
         width: 100%;
     }
 }
 
-/* excerpt variant */
+/* post-excerpt variant */
 
-.article--excerpt {
+.article--post-excerpt {
     & + & {
         border-top: remify(1) solid color("background", "shade");
         padding-top: remify(16, 16);
