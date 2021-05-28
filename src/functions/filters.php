@@ -93,7 +93,7 @@ add_action("wp", "__gulp_init_namespace___delay_shortcode_expansion");
 function __gulp_init_namespace___remove_broken_characters(string $content): string {
     return preg_replace("/(\u{2028}|\u{2029}|\u{009D})/", "", $content);
 }
-add_filter("the_content", "__gulp_init_namespace___remove_broken_characters");
+add_filter("the_content", "__gulp_init_namespace___remove_broken_characters", 10, 1);
 
 /**
  * Remove wpautop stuff from shortcodes
@@ -120,7 +120,7 @@ function __gulp_init_namespace___fix_shortcodes(string $content): string {
 
     return $content;
 }
-add_filter("the_content", "__gulp_init_namespace___fix_shortcodes", 15);
+add_filter("the_content", "__gulp_init_namespace___fix_shortcodes", 25, 1);
 
 /**
  * Add classes to elements
@@ -318,7 +318,7 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
 
     return $content;
 }
-add_filter("the_content", "__gulp_init_namespace___add_user_content_classes", 20);
+add_filter("the_content", "__gulp_init_namespace___add_user_content_classes", 20, 1);
 
 /**
  * Wrap handorgel shortcodes in appropriate containers
@@ -438,7 +438,7 @@ function __gulp_init_namespace___wrap_handorgel_shortcodes(string $content): str
 
     return $content;
 }
-add_filter("the_content", "__gulp_init_namespace___wrap_handorgel_shortcodes", 30);
+add_filter("the_content", "__gulp_init_namespace___wrap_handorgel_shortcodes", 30, 1); // must occur after shortcodes are parsed
 
 /**
  * Enable responsive iframes
@@ -504,7 +504,7 @@ function __gulp_init_namespace___responsive_iframes(string $content): string {
 
     return $content;
 }
-add_filter("the_content", "__gulp_init_namespace___responsive_iframes", 20);
+add_filter("the_content", "__gulp_init_namespace___responsive_iframes", 20, 1);
 
 /**
  * Enable responsive tables
@@ -543,7 +543,7 @@ function __gulp_init_namespace___responsive_tables(string $content): string {
 
     return $content;
 }
-add_filter("the_content", "__gulp_init_namespace___responsive_tables", 20);
+add_filter("the_content", "__gulp_init_namespace___responsive_tables", 20, 1);
 
 /**
  * Lazy load images

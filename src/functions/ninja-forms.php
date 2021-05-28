@@ -17,19 +17,19 @@ function __gulp_init_namespace___nf_delay_shortcode_expansion(): void {
 add_action("wp", "__gulp_init_namespace___nf_delay_shortcode_expansion");
 
 // add classes to elements
-add_filter("nf_the_content", "__gulp_init_namespace___add_user_content_classes", 20);
+add_filter("nf_the_content", "__gulp_init_namespace___add_user_content_classes", 20, 1);
 
 // wrap handorgel accordions
-add_filter("nf_the_content", "__gulp_init_namespace___wrap_handorgel_shortcodes", 30);
+add_filter("nf_the_content", "__gulp_init_namespace___wrap_handorgel_shortcodes", 30, 1);
 
 // enable responsive iframes
-add_filter("nf_the_content", "__gulp_init_namespace___responsive_iframes", 20);
+add_filter("nf_the_content", "__gulp_init_namespace___responsive_iframes", 20, 1);
 
 // enable responsive tables
-add_filter("nf_the_content", "__gulp_init_namespace___responsive_tables", 20);
+add_filter("nf_the_content", "__gulp_init_namespace___responsive_tables", 20, 1);
 
 // lazy load images
-add_filter("nf_the_content", "__gulp_init_namespace___lazy_load_images", 30);
+add_filter("nf_the_content", "__gulp_init_namespace___lazy_load_images", 30, 1);
 
 /**
  * Disable display styles
