@@ -112,10 +112,15 @@ function __gulp_init_namespace___fix_shortcodes(string $content): string {
             $shortcodes[] = $tag;
         }
 
+        /**
+         * It is important tha `$block` be wrapped in `()` within a regular expression;
+         * it outputs a pipe separated group
+         */
         $block = join("|", $shortcodes);
 
-        $content = preg_replace("/(<p>)?\[($block)(\s[^\]]+)?\](<\/p>|<br \/>)?/", "[$2$3]", $content);
-        $content = preg_replace("/(<p>)?\[\/($block)](<\/p>|<br \/>)?/", "[/$2]", $content);
+        $content = preg_replace("/(?:<p>)?\[($block)(\s[^\]]+)?\](?:<\/p>|<br \/>)?/", "[$1$2]", $content);
+        $content = preg_replace("/(?:<p>)?\[\/($block)](?:<\/p>|<br \/>)?/", "[/$1]", $content);
+        $content = preg_replace("/(?:<br(?: \/)?>\n*)+(\[\/(?:$block)\](?:\n\[\/?[^\]]+\])+\n?)<\/p>/", "</p>$1", $content);
     }
 
     return $content;
