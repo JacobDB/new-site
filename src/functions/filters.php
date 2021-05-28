@@ -576,7 +576,7 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
         $images = $XPath->query("//*[self::img or self::source]");
 
         foreach ($images as $image) {
-            if ($image->parentNode->nodeName !== "noscript" && ! $image->getAttribute("data-orig-file")) {
+            if (! in_array($image->parentNode->nodeName, ["noscript", "video"]) && ! $image->getAttribute("data-orig-file")) {
                 $existing_src    = $image->getAttribute("src");
                 $existing_srcset = $image->getAttribute("srcset");
 
@@ -586,7 +586,7 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
 
                 // try to determine height and width programmatically
                 if (! ($height && $width) && ($existing_src || $existing_srcset)) {
-                    $src  = $existing_src ? $existing_src : explode(" ", $existing_srcset)[0];
+                    $src = $existing_src ? $existing_src : explode(" ", $existing_srcset)[0];
 
                     if ($data = getimagesize($_SERVER["DOCUMENT_ROOT"] . parse_url($src, PHP_URL_PATH))) {
                         $height = $data[1];
