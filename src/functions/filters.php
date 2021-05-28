@@ -279,7 +279,7 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
         $table_cell_headers = $DOM->getElementsByTagName("th");
 
         foreach ($table_cell_headers as $table_cell_header) {
-            $table_cell_header->setAttribute("class", "text__cell text__cell--header {$table_cell_header->getAttribute("class")}");
+            $table_cell_header->setAttribute("class", "text__cell text__cell--heading {$table_cell_header->getAttribute("class")}");
         }
 
         $table_cells = $DOM->getElementsByTagName("td");

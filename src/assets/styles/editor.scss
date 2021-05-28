@@ -109,7 +109,7 @@
     }
 
     table th {
-        @extend .text__cell--header !optional;
+        @extend .text__cell--heading !optional;
     }
 
     blockquote {
