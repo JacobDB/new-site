@@ -1,6 +1,6 @@
 <?php
 $home_object = get_option("page_for_posts") ? get_post(get_option("page_for_posts")) : false;
-$home_title  = $home_object && key_exists("post_title", $home_object) ? apply_filters("the_title", $home_object->post_title, $post->ID) : __("Latest Posts", "__gulp_init_namespace__");
+$home_title  = $home_object && isset($home_object->post_title) ? apply_filters("the_title", $home_object->post_title, $home_object->ID) : __("Latest Posts", "__gulp_init_namespace__");
 
 if (is_paged() && $page = get_query_var("paged")) {
     $home_title = sprintf("{$home_title} - " . __("Page %s of %s", "__gulp_init_namespace__"), $page, $wp_query->max_num_pages);
