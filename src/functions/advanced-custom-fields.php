@@ -125,7 +125,7 @@ add_filter("acf/format_value", "__gulp_init_namespace___acf_remove_broken_charac
  */
 function __gulp_init_namespace___acf_delay_shortcode_expansion(): void {
     remove_filter("acf_the_content", "do_shortcode", 11);
-    add_filter("acf_the_content", "do_shortcode", 25);
+    add_filter("acf_the_content", "do_shortcode", 26);
 }
 add_action("wp", "__gulp_init_namespace___acf_delay_shortcode_expansion");
 

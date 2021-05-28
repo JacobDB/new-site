@@ -79,7 +79,7 @@ add_action("the_post", "__gulp_init_namespace___enable_post_password_protection"
  */
 function __gulp_init_namespace___delay_shortcode_expansion(): void {
     remove_filter("the_content", "do_shortcode", 11);
-    add_filter("the_content", "do_shortcode", 25);
+    add_filter("the_content", "do_shortcode", 26);
 }
 add_action("wp", "__gulp_init_namespace___delay_shortcode_expansion");
 

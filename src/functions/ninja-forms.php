@@ -12,7 +12,7 @@
  */
 function __gulp_init_namespace___nf_delay_shortcode_expansion(): void {
     remove_filter("nf_the_content", "do_shortcode", 11);
-    add_filter("nf_the_content", "do_shortcode", 25);
+    add_filter("nf_the_content", "do_shortcode", 26);
 }
 add_action("wp", "__gulp_init_namespace___nf_delay_shortcode_expansion");
 
