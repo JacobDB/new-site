@@ -24,6 +24,33 @@ function __gulp_init_namespace___get_field(string $name, $post_id = null) {
 /* FILTERS */
 
 /**
+ * Reformat "address" field to return "false" if all values are empty
+ *
+ * @param mixed $value
+ * @param int|string $post_id
+ * @param array $field
+ * @return mixed
+ */
+function __gulp_init_namespace___acf_format_value_address($value, $post_id = 0, array $field = []) {
+    if (is_array($value)) {
+        $has_value = false;
+
+        foreach ($value as $name => $data) {
+            if ($data) {
+                $has_value = true; break;
+            }
+        }
+
+        if (! $has_value) {
+            return false;
+        }
+    }
+
+    return $value;
+}
+add_filter("acf/format_value/name=address", "__gulp_init_namespace___acf_format_value_address", 10, 3);
+
+/**
  * Convert phone numbers from objects to arrays
  *
  * @param mixed $value
