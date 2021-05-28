@@ -184,7 +184,7 @@ class __gulp_init_namespace___menu_walker extends Walker_Nav_Menu {
         /**
          * Construct a target attribute if specified
          */
-        $target = $item->target ? " target='{$item->target}'" : "";
+        $target = $item->target ? " target='" . esc_attr($item->target) . "'" : "";
 
         /**
          * If no rel is set, and URL is external, set rel to `noopener`
