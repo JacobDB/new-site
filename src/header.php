@@ -1,3 +1,8 @@
+<?php
+$has_nav_menu = [
+    "primary" => has_nav_menu("primary"),
+];
+?>
 <!doctype html>
 <html class="no-javascript" <?php language_attributes(); ?>>
     <head>
@@ -16,13 +21,13 @@
                 <div class="header__inner">
                     <div class="header__row row row--padded-tight row--align-center">
                         <div class="col-auto col--grow-0 col--shrink-0 __hidden-xs">
-                            <button class="header__panel-toggle panel-toggle" data-toggle="mobile-menu"<?php if (! has_nav_menu("primary")): ?> style="pointer-events:none;visibility:hidden;"<?php endif; ?>>
-                                <i class="panel-toggle__icon fas fa-fw fa-bars"></i>
+                            <button class="header__panel-toggle panel-toggle" data-toggle="mobile-menu"<?php if (! $has_nav_menu["primary"]): ?> style="pointer-events:none;visibility:hidden;"<?php endif; ?>>
+                                <i class="panel-toggle__icon fal fa-fw fa-bars"></i>
                                 <span class="__visuallyhidden"><?php _e("View Menu", "__gulp_init_namespace__"); ?></span>
                             </button>
                         </div>
                         <div class="col-0">
-                            <a class="header__logo logo" href="<?php echo home_url(); ?>">
+                            <a class="header__logo logo" href="<?php echo esc_url(get_bloginfo("url")); ?>">
                                 <?php echo __gulp_init_namespace___img(get_theme_file_uri("assets/media/logo.svg"), ["alt" => get_bloginfo("name"), "class" => "logo__image", "height" => "69", "width" => "300"], false); ?>
                             </a>
                         </div>
@@ -32,7 +37,7 @@
                                 <span class="__visuallyhidden"><?php _e("View Search", "__gulp_init_namespace__"); ?></span>
                             </button>
                             <?php if (! is_search()): ?>
-                                <div class="header__search-form__container search-form__container search-form__container--expandable __nomargin __hidden-xs" role="search" id="mobile-search">
+                                <div class="header__search-form__container search-form__container search-form__container--expandable __nomargin" id="mobile-search">
                                     <?php
                                     get_search_form([
                                         "id" => "mobile-search",
@@ -42,7 +47,7 @@
                             <?php endif; ?>
                         </div><!--/.col-auto-->
                         <div class="col-xs-auto col--grow-0 col--shrink-0 __visible-xs">
-                            <div class="header__search-form__container search-form__container __nomargin __visible-xs" role="search">
+                            <div class="header__search-form__container search-form__container __nomargin">
                                 <?php
                                 get_search_form([
                                     "id" => "desktop-search",
@@ -54,7 +59,7 @@
                 </div><!--/.header__inner-->
             </header><!--/.header-block-->
 
-            <?php if (has_nav_menu("primary")): ?>
+            <?php if ($has_nav_menu["primary"]): ?>
                 <div class="navigation-block __visible-xs __noprint">
                     <div class="navigation__inner">
                         <nav class="navigation__menu-list__container menu-list__container">
