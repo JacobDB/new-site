@@ -4,19 +4,21 @@
 
 import Swiper from "swiper";
 
+const HERO = document.querySelector(".swiper-container--hero");
+
 // init swiper
-if (document.querySelectorAll(".swiper-container--hero .swiper-slide").length > 1) {
-    new Swiper (".swiper-container--hero", {
+if (HERO && HERO.querySelectorAll(".swiper-slide").length > 1) {
+    new Swiper (HERO, {
         autoplay: {
             delay: 15000,
         },
         loop: true,
         navigation: {
-            nextEl: ".swiper-container--hero .swiper-button--next",
-            prevEl: ".swiper-container--hero .swiper-button--prev",
+            nextEl: HERO.querySelector(".swiper-button--next"),
+            prevEl: HERO.querySelector(".swiper-button--prev"),
         },
         pagination: {
-            el: ".swiper-pagination",
+            el: HERO.querySelector(".swiper-pagination"),
             clickable: true,
         },
         speed: 150,
