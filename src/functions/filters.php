@@ -182,7 +182,7 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
             }
 
             if (! $existing_rel) {
-                $anchor->setAttribute("rel", "noopener");
+                $anchor->setAttribute("rel", "noopener noreferrer");
             }
         }
 
@@ -791,7 +791,7 @@ function __gulp_init_namespace___acrobat_link(): void {
 
         if ($has_pdf === true) {
             $output .= "<hr class='acrobat__divider divider' />";
-            $output .= "<p class='acrobat__text text'>" . sprintf(__("Having trouble opening PDFs? %sDownload Adobe Reader here.%s", "__gulp_init_namespace__"), "<a class='text__link link' href='https://get.adobe.com/reader/' target='_blank' rel='noopener'>", "</a>") . "</p>";
+            $output .= "<p class='acrobat__text text'>" . sprintf(__("Having trouble opening PDFs? %sDownload Adobe Reader here.%s", "__gulp_init_namespace__"), "<a class='text__link link' href='https://get.adobe.com/reader/' target='_blank' rel='noopener noreferrer'>", "</a>") . "</p>";
         }
 
         echo $output;

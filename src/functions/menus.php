@@ -187,10 +187,10 @@ class __gulp_init_namespace___menu_walker extends Walker_Nav_Menu {
         $target = $item->target ? " target='" . esc_attr($item->target) . "'" : "";
 
         /**
-         * If no rel is set, and URL is external, set rel to `noopener`
+         * If no rel is set, and URL is external, set rel to `noopener noreferrer`
          */
         if (__gulp_init_namespace___is_external_url($item->url)) {
-            $item->xfn = ! $item->xfn ? "noopener" : "{$item->xfn} noopener";
+            $item->xfn = ! $item->xfn ? "noopener noreferrer" : "{$item->xfn} noopener noreferrer";
         }
 
         /**

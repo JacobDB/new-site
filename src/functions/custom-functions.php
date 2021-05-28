@@ -216,10 +216,10 @@ function __gulp_init_namespace___link(string $href, string $contents = "", array
     $element = "<a href='" . esc_url($href) . "'";
 
     /**
-     * If target is set, is not empty or `_self`, and no `rel` is set, add `rel='noopener'`
+     * If target is set, is not empty or `_self`, and no `rel` is set, add `rel='noopener noreferrer'`
      */
     if (in_array("target", $atts) && ! in_array($atts["target"], ["", "_self"]) && ! in_array("rel", $atts)) {
-        $atts["rel"] = "noopener";
+        $atts["rel"] = "noopener noreferrer";
     }
 
     /**
