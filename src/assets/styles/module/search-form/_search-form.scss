@@ -38,9 +38,8 @@
         transition: color 0.15s;
     }
 
-    &:focus,
-    &:hover {
+    &:active {
         background: none;
-        color: color("accent");
+        color: color("accent", "shade");
     }
 }
