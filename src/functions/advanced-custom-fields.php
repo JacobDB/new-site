@@ -66,6 +66,38 @@ function __gulp_init_namespace___acf_format_phone_number_value($value) {
 add_filter("__gulp_init_namespace___acf_format_value", "__gulp_init_namespace___acf_format_phone_number_value", 10, 1);
 
 /**
+ * Reformat "social_media" field to contain icons and titles
+ *
+ * @param mixed $value
+ * @param int|string $post_id
+ * @param array $field
+ * @return mixed
+ */
+function __gulp_init_namespace___acf_format_value_social_media($value, $post_id = 0, array $field = []) {
+    if (is_array($value)) {
+        $output = [];
+
+        foreach ($value as $name => $url) {
+            if ($url) {
+                $title = preg_replace("/_url$/", "", $name);
+
+                $output[] = [
+                    "class" => $title,
+                    "icon"  => "fab fa-{$title}" . ($title === "facebook" ? "-f" : ($title === "linkedin" ? "-in" : ($title === "pinterest" ? "-p" : ""))),
+                    "title" => ucfirst($title),
+                    "url"   => $url,
+                ];
+            }
+        }
+
+        return $output;
+    }
+
+    return $value;
+}
+add_filter("acf/format_value/name=social_media", "__gulp_init_namespace___acf_format_value_social_media", 10, 3);
+
+/**
  * Filter out badly encoded characters from strings
  *
  * @param  mixed $value
