@@ -37,7 +37,8 @@
     }
 }
 
-.row--padded {
+.row--padded,
+.is-style-row-padded {
     & {
         width: calc(100% + #{remify($column-gap, 16)});
     }
@@ -47,7 +48,8 @@
     }
 }
 
-.row--padded-tight {
+.row--padded-tight,
+.is-style-row-padded-tight {
     & {
         width: calc(100% + #{remify($column-gap * 0.75, 16)});
     }
@@ -57,7 +59,8 @@
     }
 }
 
-.row--padded-loose {
+.row--padded-loose,
+.is-style-row-padded-loose {
     & {
         width: calc(100% + #{remify($column-gap * 1.25, 16)});
     }
