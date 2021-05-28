@@ -54,9 +54,11 @@ add_filter("acf/format_value/name=address", "__gulp_init_namespace___acf_format_
  * Convert phone numbers from objects to arrays
  *
  * @param mixed $value
+ * @param int|string $post_id
+ * @param array $field
  * @return mixed
  */
-function __gulp_init_namespace___acf_format_phone_number_value($value) {
+function __gulp_init_namespace___acf_format_phone_number_value($value, $post_id = 0, array $field = []) {
     if ($value instanceof Log1x\AcfPhoneNumber\PhoneNumber) {
         $value = $value->toArray();
     }
