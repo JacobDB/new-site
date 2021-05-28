@@ -236,13 +236,13 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
         $ordered_lists = $DOM->getElementsByTagName("ol");
 
         foreach ($ordered_lists as $ordered_list) {
-            $ordered_list->setAttribute("class", "user-content__text text text--list text--ordered {$ordered_list->getAttribute("class")}");
+            $ordered_list->setAttribute("class", "user-content__text text text--list text--list-ordered {$ordered_list->getAttribute("class")}");
         }
 
         $unordered_lists = $DOM->getElementsByTagName("ul");
 
         foreach ($unordered_lists as $unordered_list) {
-            $unordered_list->setAttribute("class", "user-content__text text text--list text--unordered {$unordered_list->getAttribute("class")}");
+            $unordered_list->setAttribute("class", "user-content__text text text--list text--list-unordered {$unordered_list->getAttribute("class")}");
         }
 
         $list_items = $DOM->getElementsByTagName("li");
