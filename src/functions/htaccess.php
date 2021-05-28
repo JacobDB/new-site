@@ -1399,22 +1399,22 @@ EOF;
   # Web fonts
 
     # Embedded OpenType (EOT)
-    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
-    ExpiresByType font/eot                              "access plus 1 month"
+    ExpiresByType application/vnd.ms-fontobject         "access plus 6 months"
+    ExpiresByType font/eot                              "access plus 6 months"
 
     # OpenType
-    ExpiresByType font/opentype                         "access plus 1 month"
+    ExpiresByType font/opentype                         "access plus 6 months"
 
     # TrueType
-    ExpiresByType application/x-font-ttf                "access plus 1 month"
+    ExpiresByType application/x-font-ttf                "access plus 6 months"
 
     # Web Open Font Format (WOFF) 1.0
-    ExpiresByType application/font-woff                 "access plus 1 month"
-    ExpiresByType application/x-font-woff               "access plus 1 month"
-    ExpiresByType font/woff                             "access plus 1 month"
+    ExpiresByType application/font-woff                 "access plus 6 months"
+    ExpiresByType application/x-font-woff               "access plus 6 months"
+    ExpiresByType font/woff                             "access plus 6 months"
 
     # Web Open Font Format (WOFF) 2.0
-    ExpiresByType application/font-woff2                "access plus 1 month"
+    ExpiresByType application/font-woff2                "access plus 6 months"
 
 
   # Other
