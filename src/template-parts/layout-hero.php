@@ -4,8 +4,8 @@ $class          = isset($this->vars["class"]) ? $this->vars["class"] : "";
 $block_class    = gettype($class) === "array" && key_exists("block", $class) ? " {$class["block"]}" : (gettype($class) === "string" ? " {$class}" : "");
 $inner_class    = gettype($class) === "array" && key_exists("inner", $class) ? " {$class["inner"]}" : "";
 $swiper_class   = gettype($class) === "array" && key_exists("swiper", $class) ? " {$class["swiper"]}" : "";
-$navigation     = isset($this->vars["navigation"]) ? $this->vars["navigation"] : false;
 $pagination     = isset($this->vars["pagination"]) ? $this->vars["pagination"] : false;
+$navigation     = isset($this->vars["navigation"]) ? $this->vars["navigation"] : false;
 $slideshow      = isset($this->vars["slideshow"]) ? $this->vars["slideshow"] : ($post ? __gulp_init_namespace___get_field("slideshow", $post->ID) : false);
 $image_size     = isset($this->vars["image_size"]) ? $this->vars["image_size"] : "hero";
 $featured_image = isset($this->vars["featured_image"]) ? $this->vars["featured_image"] : ($post && has_post_thumbnail($post->ID) ? ["alt" => get_post_meta(get_post_thumbnail_id($post->ID), "_wp_attachment_image_alt", true), "small" => wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), "{$image_size}")[0], "medium" => wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), "{$image_size}_medium")[0], "large" => wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), "{$image_size}_large")[0]] : false);
@@ -21,6 +21,7 @@ $slide_count = $slideshow ? count($slideshow) : 0;
                 <div class="swiper-wrapper">
                     <?php if ($slideshow): ?>
                         <?php foreach ($slideshow as $slide): ?>
+
                             <?php
                             $image = isset($slide["image"]) ? $slide["image"] : false;
                             $link  = isset($slide["link"]) ? $slide["link"] : false;
@@ -30,7 +31,7 @@ $slide_count = $slideshow ? count($slideshow) : 0;
                                 <figure class="swiper-slide">
 
                                     <?php if ($link && $link["url"]): ?>
-                                        <a class="swiper__link link" href="<?php echo $link["url"]; ?>"<?php if ($link["title"]): ?> title="<?php echo $link["title"]; ?>"<?php endif; ?><?php if ($link["target"]): ?> rel="noopener" target="<?php echo $link["target"]; ?>"<?php endif; ?>>
+                                        <a class="swiper__link link" href="<?php echo $link["url"]; ?>"<?php if ($link["title"]): ?> title="<?php echo $link["title"]; ?>"<?php endif; ?><?php if ($link["target"]): ?> rel="noopener noreferrer" target="<?php echo $link["target"]; ?>"<?php endif; ?>>
                                     <?php endif; ?>
 
                                     <?php if ($image["sizes"]["{$image_size}"]): ?>
@@ -54,6 +55,7 @@ $slide_count = $slideshow ? count($slideshow) : 0;
                                     <?php if ($image["title"] || $image["caption"]): ?>
                                         <figcaption class="swiper__caption">
                                             <div class="swiper__caption__inner">
+
                                                 <?php if ($image["title"]): ?>
                                                     <h6 class="swiper__title title<?php echo ! $image["caption"] ? " __nomargin" : ""; ?>">
                                                         <?php echo $image["title"]; ?>
@@ -65,6 +67,7 @@ $slide_count = $slideshow ? count($slideshow) : 0;
                                                         <?php echo apply_filters("the_content", $image["caption"]); ?>
                                                     </div>
                                                 <?php endif; ?>
+
                                             </div><!--/.swiper__caption__inner-->
                                         </figcaption><!--/.swiper__caption-->
                                     <?php endif; // ($image["title"] || $image["caption"]) ?>
@@ -74,8 +77,9 @@ $slide_count = $slideshow ? count($slideshow) : 0;
                                     <?php endif; ?>
 
                                 </figure><!--/.swiper-slide-->
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+                            <?php endif; // ($image) ?>
+
+                        <?php endforeach; // ($slideshow as $slide) ?>
                     <?php elseif ($featured_image): ?>
                         <figure class="swiper-slide">
 
@@ -106,15 +110,17 @@ $slide_count = $slideshow ? count($slideshow) : 0;
                             <?php endif; ?>
 
                         </figure><!--/.swiper-slide-->
-                    <?php endif; ?>
-                </div> <!--/.swiper-wrapper-->
+                    <?php endif; // ($slideshow) elseif ($featured_image) ?>
+                </div><!--/.swiper-wrapper-->
 
-                <?php if ($slideshow && ($navigation || $pagination) && $slide_count > 1): ?>
-                    <?php if ($navigation): ?>
+                <?php if ($slideshow && ($pagination || $navigation ) && $slide_count > 1): ?>
+
+                    <?php if ($pagination): ?>
                         <div class="swiper-pagination"></div>
                     <?php endif; ?>
 
-                    <?php if ($pagination): ?>
+                    <?php if ($navigation): ?>
+
                         <button class="swiper-button swiper-button--prev">
                             <i class="swiper-button__icon fas fa-caret-left"></i>
                             <span class="__visuallyhidden"><?php _e("Previous Slide", "__gulp_init_namespace__"); ?></span>
@@ -124,8 +130,10 @@ $slide_count = $slideshow ? count($slideshow) : 0;
                             <i class="swiper-button__icon fas fa-caret-right"></i>
                             <span class="__visuallyhidden"><?php _e("Next Slide", "__gulp_init_namespace__"); ?></span>
                         </button>
-                    <?php endif; ?>
-                <?php endif; ?>
+
+                    <?php endif; // ($navigation) ?>
+
+                <?php endif; // ($slideshow && ($pagination || $navigation ) && $slide_count > 1) ?>
 
             </div><!--/.hero__swiper-container-->
         </div><!--/.hero__inner-->
