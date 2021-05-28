@@ -479,12 +479,12 @@ function __gulp_init_namespace___format_address(array $address = [], int $lines 
 /**
  * Given an address, return a URL to a map, appropriate for the users platform
  *
- * @param string $address  A single line, human readable address.
+ * @param string|null $address  A single line, human readable address.
  * @param bool $embed  Return an embeddable Google Maps URL for an iframe
  *
  * @return string  The URL to the address
  */
-function __gulp_init_namespace___get_map_url(string $address, bool $embed = false): string {
+function __gulp_init_namespace___get_map_url(?string $address, bool $embed = false): string {
     $address_url = "";
 
     if ($address) {
