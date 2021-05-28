@@ -187,9 +187,9 @@
     }
 }
 
-/* flex variant */
+/* display-flex variant */
 
-.menu-list--flex {
+.menu-list--display-flex {
     & {
         display: flex;
     }
@@ -211,7 +211,7 @@
     }
 }
 
-/* flex start variant */
+/* justify-start variant */
 
 .menu-list--justify-start {
     & {
@@ -223,7 +223,7 @@
     }
 }
 
-/* flex center variant */
+/* justify-center variant */
 
 .menu-list--justify-center {
     & {
@@ -235,7 +235,7 @@
     }
 }
 
-/* flex end variant */
+/* justify-end variant */
 
 .menu-list--justify-end {
     & {
@@ -247,7 +247,7 @@
     }
 }
 
-/* flex between variant */
+/* justify-between variant */
 
 .menu-list--justify-between {
     & {
@@ -469,7 +469,7 @@
         padding-left: remify(32, 16);
     }
 
-    // accomodate the additional padding on first menu items
+    // accommodate the additional padding on first menu items
     .menu-list--child.menu-list--mega.menu-list--depth-2 > .menu-list__item:first-child > .menu-list__link {
         background-position: remify(16 12, 16);
     }
