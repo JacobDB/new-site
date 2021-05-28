@@ -641,16 +641,24 @@ function __gulp_init_namespace___get_primary_term(int $post_id = 0, string $taxo
 function __gulp_init_namespace___imgs_have_alts(string $content): bool {
     $DOM = new DOMDocument();
 
-    // disable errors to get around HTML5 warnings...
+    /**
+     * Use internal errors to get around HTML5 warnings
+     */
     libxml_use_internal_errors(true);
 
-    // load in content
-    $DOM->loadHTML(mb_convert_encoding("<html><body>{$content}</body></html>", "HTML-ENTITIES", "UTF-8"), LIBXML_HTML_NODEFDTD);
+    /**
+     * Load in the content, with proper encoding and an `<html>` wrapper required for parsing
+     */
+    $DOM->loadHTML("<?xml encoding='utf-8' ?><html>{$content}</html>", LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-    // reset errors to get around HTML5 warnings...
+    /**
+     * Clear errors to get around HTML5 warnings
+     */
     libxml_clear_errors();
 
-    // XPath required otherwise an infinite loop occurs
+    /**
+     * Use XPath to query images, otherwise an infinite loop occurs
+     */
     $XPath = new DOMXPath($DOM);
 
     $images = $XPath->query("//*[self::img or self::source]");
@@ -671,4 +679,18 @@ function __gulp_init_namespace___imgs_have_alts(string $content): bool {
  */
 function __gulp_init_namespace___is_wp_login(): bool {
     return stripos($_SERVER["SCRIPT_NAME"], strrchr(wp_login_url(), "/")) !== false;
+}
+
+/**
+ * Get the inner HTML of a given DOMNode
+ *
+ * @link https://stackoverflow.com/a/22490902/654480
+ * @link https://stackoverflow.com/a/29499398/654480
+ * @link https://stackoverflow.com/a/39193507/654480
+ *
+ * @param DOMNode $node
+ * @return string
+ */
+function __gulp_init_namespace___dom_inner_html(DOMNode $node): string {
+    return implode(array_map([$node->ownerDocument,"saveHTML"], iterator_to_array($node->childNodes)));
 }

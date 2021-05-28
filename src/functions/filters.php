@@ -138,13 +138,19 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
     if (! (is_admin() && ! wp_doing_ajax()) && $content) {
         $DOM = new DOMDocument();
 
-        // disable errors to get around HTML5 warnings...
+        /**
+         * Use internal errors to get around HTML5 warnings
+         */
         libxml_use_internal_errors(true);
 
-        // load in content
-        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
+        /**
+         * Load in the content, with proper encoding and an `<html>` wrapper required for parsing
+         */
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html>{$content}</html>", LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-        // reset errors to get around HTML5 warnings...
+        /**
+         * Clear errors to get around HTML5 warnings
+         */
         libxml_clear_errors();
 
         $anchors = $DOM->getElementsByTagName("a");
@@ -329,8 +335,10 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
             $em->setAttribute("class", "user-content__em {$em->getAttribute("class")}");
         }
 
-        // remove unneeded tags (inserted for parsing reasons)
-        $content = $DOM->saveHTML($DOM->documentElement);
+        /**
+         * Save changes, remove unneeded tags
+         */
+        $content = __gulp_init_namespace___dom_inner_html($DOM->documentElement);
     }
 
     return $content;
@@ -349,17 +357,17 @@ function __gulp_init_namespace___wrap_handorgel_shortcodes(string $content): str
         $DOM = new DOMDocument();
 
         /**
-         * Disable errors to get around HTML5 warnings...
+         * Use internal errors to get around HTML5 warnings
          */
         libxml_use_internal_errors(true);
 
         /**
-         * Load in content
+         * Load in the content, with proper encoding and an `<html>` wrapper required for parsing
          */
-        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html>{$content}</html>", LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
         /**
-         * Reset errors to get around HTML5 warnings...
+         * Clear errors to get around HTML5 warnings
          */
         libxml_clear_errors();
 
@@ -448,9 +456,9 @@ function __gulp_init_namespace___wrap_handorgel_shortcodes(string $content): str
         }
 
         /**
-         * Remove unneeded tags (inserted for parsing reasons)
+         * Save changes, remove unneeded tags
          */
-        $content = $DOM->saveHTML($DOM->documentElement);
+        $content = __gulp_init_namespace___dom_inner_html($DOM->documentElement);
     }
 
     return $content;
@@ -468,13 +476,19 @@ function __gulp_init_namespace___responsive_iframes(string $content): string {
     if (! (is_admin() && ! wp_doing_ajax()) && $content) {
         $DOM = new DOMDocument();
 
-        // disable errors to get around HTML5 warnings...
+        /**
+         * Use internal errors to get around HTML5 warnings
+         */
         libxml_use_internal_errors(true);
 
-        // load in content
-        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
+        /**
+         * Load in the content, with proper encoding and an `<html>` wrapper required for parsing
+         */
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html>{$content}</html>", LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-        // reset errors to get around HTML5 warnings...
+        /**
+         * Clear errors to get around HTML5 warnings
+         */
         libxml_clear_errors();
 
         $iframes = $DOM->getElementsByTagName("iframe");
@@ -515,8 +529,10 @@ function __gulp_init_namespace___responsive_iframes(string $content): string {
             $iframe_container_clone->appendChild($iframe);
         }
 
-        // remove unneeded tags (inserted for parsing reasons)
-        $content = $DOM->saveHTML($DOM->documentElement);
+        /**
+         * Save changes, remove unneeded tags
+         */
+        $content = __gulp_init_namespace___dom_inner_html($DOM->documentElement);
     }
 
     return $content;
@@ -534,13 +550,19 @@ function __gulp_init_namespace___responsive_tables(string $content): string {
     if (! (is_admin() && ! wp_doing_ajax()) && $content) {
         $DOM = new DOMDocument();
 
-        // disable errors to get around HTML5 warnings...
+        /**
+         * Use internal errors to get around HTML5 warnings
+         */
         libxml_use_internal_errors(true);
 
-        // load in content
-        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
+        /**
+         * Load in the content, with proper encoding and an `<html>` wrapper required for parsing
+         */
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html>{$content}</html>", LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-        // reset errors to get around HTML5 warnings...
+        /**
+         * Clear errors to get around HTML5 warnings
+         */
         libxml_clear_errors();
 
         $tables = $DOM->getElementsByTagName("table");
@@ -554,8 +576,10 @@ function __gulp_init_namespace___responsive_tables(string $content): string {
             $table_container_clone->appendChild($table);
         }
 
-        // remove unneeded tags (inserted for parsing reasons)
-        $content = $DOM->saveHTML($DOM->documentElement);
+        /**
+         * Save changes, remove unneeded tags
+         */
+        $content = __gulp_init_namespace___dom_inner_html($DOM->documentElement);
     }
 
     return $content;
@@ -573,16 +597,24 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
     if (! (is_admin() && ! wp_doing_ajax()) && $content) {
         $DOM = new DOMDocument();
 
-        // disable errors to get around HTML5 warnings...
+        /**
+         * Use internal errors to get around HTML5 warnings
+         */
         libxml_use_internal_errors(true);
 
-        // load in content
-        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$content}</body></html>", LIBXML_HTML_NODEFDTD);
+        /**
+         * Load in the content, with proper encoding and an `<html>` wrapper required for parsing
+         */
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html>{$content}</html>", LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-        // reset errors to get around HTML5 warnings...
+        /**
+         * Clear errors to get around HTML5 warnings
+         */
         libxml_clear_errors();
 
-        // XPath required otherwise an infinite loop occurs
+        /**
+         * Use XPath to query images, otherwise an infinite loop occurs
+         */
         $XPath = new DOMXPath($DOM);
 
         $images = $XPath->query("//*[self::img or self::source]");
@@ -647,8 +679,10 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
             }
         }
 
-        // remove unneeded tags (inserted for parsing reasons)
-        $content = $DOM->saveHTML($DOM->documentElement);
+        /**
+         * Save changes, remove unneeded tags
+         */
+        $content = __gulp_init_namespace___dom_inner_html($DOM->documentElement);
     }
 
     return $content;
@@ -680,13 +714,19 @@ function __gulp_init_namespace___remove_thumbnail_dimensions(string $html): stri
     if (! (is_admin() && ! wp_doing_ajax()) && $html) {
         $DOM = new DOMDocument();
 
-        // disable errors to get around HTML5 warnings...
+        /**
+         * Use internal errors to get around HTML5 warnings
+         */
         libxml_use_internal_errors(true);
 
-        // load in content
-        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$html}</body></html>", LIBXML_HTML_NODEFDTD);
+        /**
+         * Load in the content, with proper encoding and an `<html>` wrapper required for parsing
+         */
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html>{$html}</html>", LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-        // reset errors to get around HTML5 warnings...
+        /**
+         * Clear errors to get around HTML5 warnings
+         */
         libxml_clear_errors();
 
         $images = $DOM->getElementsByTagName("img");
@@ -696,8 +736,10 @@ function __gulp_init_namespace___remove_thumbnail_dimensions(string $html): stri
             $image->removeAttribute("width");
         }
 
-        // remove unneeded tags (inserted for parsing reasons)
-        $html = $DOM->saveHTML($DOM->documentElement);
+        /**
+         * Save changes, remove unneeded tags
+         */
+        $html = __gulp_init_namespace___dom_inner_html($DOM->documentElement);
     }
 
     return $html;
@@ -715,13 +757,19 @@ function __gulp_init_namespace___menu_list_link_classes(string $links): string {
     if ($links) {
         $DOM = new DOMDocument();
 
-        // disable errors to get around HTML5 warnings...
+        /**
+         * Use internal errors to get around HTML5 warnings
+         */
         libxml_use_internal_errors(true);
 
-        // load in content
-        $DOM->loadHTML("<?xml encoding='utf-8' ?><html><body>{$links}</body></html>", LIBXML_HTML_NODEFDTD);
+        /**
+         * Load in the content, with proper encoding and an `<html>` wrapper required for parsing
+         */
+        $DOM->loadHTML("<?xml encoding='utf-8' ?><html>{$links}</html>", LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-        // reset errors to get around HTML5 warnings...
+        /**
+         * Clear errors to get around HTML5 warnings
+         */
         libxml_clear_errors();
 
         $anchors = $DOM->getElementsByTagName("a");
@@ -730,8 +778,10 @@ function __gulp_init_namespace___menu_list_link_classes(string $links): string {
             $anchor->setAttribute("class", "menu-list__link link {$anchor->getAttribute("class")}");
         }
 
-        // remove unneeded tags (inserted for parsing reasons)
-        $links = $DOM->saveHTML($DOM->documentElement);
+        /**
+         * Save changes, remove unneeded tags
+         */
+        $links = __gulp_init_namespace___dom_inner_html($DOM->documentElement);
     }
 
     return $links;
