@@ -389,12 +389,12 @@ function __gulp_init_namespace___get_the_excerpt(int $id = 0, array $options = [
 /**
  * Format an address in to a human readable format
  *
- * @param array<string> $address  An array keyed with `line_1`, `line_2`, `city`, `state`, and `zip_code`
+ * @param array<string>|null $address  An array keyed with `line_1`, `line_2`, `city`, `state`, and `zip_code`
  * @param int $lines  Number of lines between 1 and 3 to format the address in to
  *
  * @return string  Human readable address
  */
-function __gulp_init_namespace___format_address(array $address = [], int $lines = 1): string {
+function __gulp_init_namespace___format_address(?array $address = [], int $lines = 1): string {
     $output = "";
 
     /**
