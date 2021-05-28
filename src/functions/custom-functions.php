@@ -563,7 +563,7 @@ function __gulp_init_namespace___get_no_posts_message($queried_object): string {
     } elseif (is_archive()) {
         $error_message = sprintf(__("Sorry, no %s could be found in this %s.", "__gulp_init_namespace__"), $post_type_label, $post_taxonomy_label);
     } elseif (is_search()) {
-        $error_message = sprintf(__("Sorry, no %s could be found for the search phrase %s%s.%s", "__gulp_init_namespace__"), $post_type_label, "&ldquo;", esc_html(get_search_query()), "&rdquo;");
+        $error_message = sprintf(__("Sorry, no %s could be found for the search phrase “%s.”", "__gulp_init_namespace__"), $post_type_label, esc_html(get_search_query()));
     } else {
         $error_message = sprintf(__("Sorry, no %s could be found matching this criteria.", "__gulp_init_namespace__"), $post_type_label);
     }
