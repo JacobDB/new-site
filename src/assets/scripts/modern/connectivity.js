@@ -10,7 +10,7 @@ const OFFLINE_NOTY = new Noty({
     callbacks: {
         afterClose: () => {
             // store a cookie so the user isn't nagged on every page load
-            document.cookie = `__gulp_init_namespace___offline_noty_dismissed=true; max-age=${(60 * 60 * 6)}`;
+            document.cookie = `__gulp_init_namespace___offline_noty_dismissed=true; max-age=${(60 * 60 * 6)}; SameSite=Strict`;
         },
     },
     text: l10n.noty.offline.text,
@@ -33,7 +33,7 @@ const UPDATE_STATUS = () => {
             OFFLINE_NOTY.close();
 
             // set the cookie to false so that prompt will appear again next time they go offline
-            document.cookie = `__gulp_init_namespace___offline_noty_dismissed=false; max-age=${(60 * 60 * 6)}`;
+            document.cookie = `__gulp_init_namespace___offline_noty_dismissed=false; max-age=${(60 * 60 * 6)}; SameSite=Strict`;
 
             // remove is-offline class
             document.documentElement.classList.remove("is-offline");
