@@ -16,6 +16,7 @@ $tribe_font: $body-font;
 .tribe-events .tribe-events-l-container,
 .tribe-common--breakpoint-medium.tribe-events .tribe-events-l-container {
     & {
+        max-width: 100%;
         padding: 0;
     }
 }
@@ -338,6 +339,7 @@ $tribe_font: $body-font;
 .tribe-events-back {
     & {
         font-family: $tribe_font;
+        margin-top: 0;
     }
 }
 
@@ -358,9 +360,14 @@ $tribe_font: $body-font;
     }
 }
 
-.tribe-events-schedule h2 {
+.tribe-events-schedule {
     & {
+        margin-top: 0;
+    }
+
+    h2 {
         font-family: $tribe_font;
+        margin-top: 0;
     }
 }
 
