@@ -317,6 +317,18 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
             $figcaption->setAttribute("class", "user-content__text text {$figcaption->getAttribute("class")}");
         }
 
+        $strongs = $DOM->getElementsByTagName("strong");
+
+        foreach ($strongs as $strong) {
+            $strong->setAttribute("class", "user-content__strong {$strong->getAttribute("class")}");
+        }
+
+        $ems = $DOM->getElementsByTagName("em");
+
+        foreach ($ems as $em) {
+            $em->setAttribute("class", "user-content__em {$em->getAttribute("class")}");
+        }
+
         // remove unneeded tags (inserted for parsing reasons)
         $content = $DOM->saveHTML($DOM->documentElement);
     }
