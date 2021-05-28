@@ -2,7 +2,7 @@
     <# if ( data.renderWrapClass() !== "field-wrap hr-wrap" && data.renderWrapClass() !== "field-wrap html-wrap" && data.renderWrapClass() !== "field-wrap recaptcha-wrap" ) { #>
         <div class="nf-field-label">
             <label for="nf-field-{{{ data.id }}}" class="{{{ data.renderLabelClasses() }}} nf-text text text--label<# if (data.label_pos === 'hidden') { #> __visuallyhidden<# } #>"{{{ ( 'undefined' != typeof data.help_text && "" != data.help_text ) ? ' aria-describedby="nf_' + data.key + '_tooltip"' : '' }}} id="nf-label-field-{{{ data.id }}}">
-                {{{ ( 'undefined' != typeof data.required && 1 == data.required ) ? '<span class="ninja-forms-req-symbol __warning">*</span>' : '' }}}
+                {{{ ( 'undefined' != typeof data.required && 1 == data.required ) ? '<span class="ninja-forms-req-symbol">*</span>' : '' }}}
                 {{{ data.label }}}
             </label>
             {{{ ( 'undefined' != typeof data.help_text && "" != data.help_text ) ? '<span class="ninja-forms-help-symbol" tabindex="0" role="button"><i class="fas fa-question-circle fa-fw"></i><span class="__visuallyhidden">Help</span><span class="ninja-forms-help-tooltip" aria-live="alert" aria-hidden="true" id="nf_' + data.key + '_tooltip"><span class="ninja-forms-user-content user-content user-content--light">' + data.help_text + '</span></span></span>' : '' }}}
