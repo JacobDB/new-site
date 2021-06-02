@@ -9,7 +9,7 @@
 
     // tel links
 
-    a[href^="tel:"] {
+    a[href^="tel:"]:not(.link) {
         @extend .link;
     }
 
