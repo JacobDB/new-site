@@ -3,7 +3,7 @@
 // Scripts written by __gulp_init_author_name__ @ __gulp_init_author_company__
 
 import debounce from "debounce";
-import createFocusTrap from "focus-trap";
+import { createFocusTrap } from "focus-trap";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 // get the elements
@@ -40,6 +40,11 @@ if (MENU !== null && INNER !== null && OVERLAY !== null && TOGGLE !== null) {
         document.documentElement.classList.add("menu-active");
 
         /**
+         * Unhide the menu for screen readers
+         */
+        MENU.setAttribute("aria-hidden", "false");
+
+        /**
          * Focus the menu
          */
         MENU.focus();
@@ -63,6 +68,11 @@ if (MENU !== null && INNER !== null && OVERLAY !== null && TOGGLE !== null) {
          * Remove the active class
          */
         document.documentElement.classList.remove("menu-active");
+
+        /**
+         * Hide the menu for screen readers
+         */
+        MENU.setAttribute("aria-hidden", "true");
 
         /**
          * Focus the toggle
