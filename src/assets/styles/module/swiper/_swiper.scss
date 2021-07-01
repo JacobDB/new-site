@@ -4,6 +4,8 @@
  * Swiper (http://idangero.us/swiper/)
 \* ------------------------------------------------------------------------ */
 
+@use "sass:math";
+
 // Vendor
 
 @use "swiper/dist/css/swiper.css";
@@ -31,7 +33,7 @@
     &::after {
         content: "";
         display: block;
-        padding-bottom: (400 / 640) * 100%;
+        padding-bottom: math.div(400, 640) * 100%;
         width: 100%;
     }
 

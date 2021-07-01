@@ -1,19 +1,21 @@
 // Styles written by __gulp_init_author_name__ @ __gulp_init_author_company__
 
+@use "sass:math";
+
 @import "helpers/_mixins";
 @import "helpers/_functions";
 @import "helpers/_variables";
 
 @for $i from 1 through 12 {
     .col-#{$i} {
-        max-width: ($i / 12) * 100%;
+        max-width: math.div($i, 12) * 100%;
     }
 }
 
 @include larger-than(xs) {
     @for $i from 1 through 12 {
         .col-xs-#{$i} {
-            max-width: ($i / 12) * 100%;
+            max-width: math.div($i, 12) * 100%;
         }
     }
 }
@@ -21,7 +23,7 @@
 @include larger-than(s) {
     @for $i from 1 through 12 {
         .col-s-#{$i} {
-            max-width: ($i / 12) * 100%;
+            max-width: math.div($i, 12) * 100%;
         }
     }
 }
@@ -29,7 +31,7 @@
 @include larger-than(m) {
     @for $i from 1 through 12 {
         .col-m-#{$i} {
-            max-width: ($i / 12) * 100%;
+            max-width: math.div($i, 12) * 100%;
         }
     }
 }
@@ -37,7 +39,7 @@
 @include larger-than(l) {
     @for $i from 1 through 12 {
         .col-l-#{$i} {
-            max-width: ($i / 12) * 100%;
+            max-width: math.div($i, 12) * 100%;
         }
     }
 }
@@ -45,7 +47,7 @@
 @include larger-than(xl) {
     @for $i from 1 through 12 {
         .col-xl-#{$i} {
-            max-width: ($i / 12) * 100%;
+            max-width: math.div($i, 12) * 100%;
         }
     }
 }

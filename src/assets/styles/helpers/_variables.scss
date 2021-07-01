@@ -1,5 +1,7 @@
 // Styles written by __gulp_init_author_name__ @ __gulp_init_author_company__
 
+@use "sass:math";
+
 /* ------------------------------------------------------------------------ *\
  * Colors
 \* ------------------------------------------------------------------------ */
@@ -102,15 +104,15 @@ $column-count: 12;
  * Break Points
 \* ------------------------------------------------------------------------ */
 
-$xxxl-break: 1440em / 16;
-$xxl-break:  1366em / 16;
-$xl-break:   1280em / 16;
-$l-break:    1024em / 16;
-$m-break:    960em / 16;
-$s-break:    853em / 16;
-$xs-break:   768em / 16;
-$xxs-break:  640em / 16;
-$xxxs-break: 480em / 16;
+$xxxl-break: math.div(1440em, 16);
+$xxl-break:  math.div(1366em, 16);
+$xl-break:   math.div(1280em, 16);
+$l-break:    math.div(1024em, 16);
+$m-break:    math.div(960em, 16);
+$s-break:    math.div(853em, 16);
+$xs-break:   math.div(768em, 16);
+$xxs-break:  math.div(640em, 16);
+$xxxs-break: math.div(480em, 16);
 
 $breakpoints: (
     xxxs: $xxxs-break,

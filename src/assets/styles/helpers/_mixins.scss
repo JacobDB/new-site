@@ -4,6 +4,8 @@
  * Mixins
 \* ------------------------------------------------------------------------ */
 
+@use "sass:math";
+
 // nth-child: https://paulund.co.uk/nth-child-sass-mixins
 
 @mixin first-child() {
@@ -103,7 +105,7 @@
     $width: map-get($breakpoints, $point-name);
 
     @if $inclusive == false {
-        $width: $width - (1 / 16);
+        $width: $width - math.div(1, 16);
     }
 
     @media (max-width: $width) {
@@ -117,7 +119,7 @@
     $width: map-get($breakpoints, $point-name);
 
     @if $inclusive == false {
-        $width: $width + (1 / 16);
+        $width: $width + math.div(1, 16);
     }
 
     @media (min-width: $width) {

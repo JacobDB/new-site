@@ -1,5 +1,7 @@
 // Styles written by __gulp_init_author_name__ @ __gulp_init_author_company__
 
+@use "sass:math";
+
 /* ------------------------------------------------------------------------ *\
  * Functions
 \* ------------------------------------------------------------------------ */
@@ -42,11 +44,11 @@
             // add as space if $output already has a value
             $output: if($output == "", "", $output + " ");
             // calculate, append value to $output
-            $output: $output + ((strip-unit($size) / strip-unit($base)) + $unit);
+            $output: $output + math.div(strip-unit($size), strip-unit($base)) + $unit;
         }
 
         @else {
-            // pass the value through unchagned if $size is not a number
+            // pass the value through unchanged if $size is not a number
             $output: $output + " " + $size;
         }
     }
@@ -58,7 +60,7 @@
  * Convert Photoshop leading to CSS line-height
  *
  * @param  {Number}  $size - Value of Leading in Photoshop's Character Panel
- * @param  {Number}  $base - Value of Font Size in Photosohp's Character Panel
+ * @param  {Number}  $base - Value of Font Size in Photoshop's Character Panel
  */
 @function leading($size, $base: null) {
     $base: if($base == null, 16, strip-unit($base));
@@ -71,7 +73,7 @@
  * Convert Photoshop tracking to CSS letter-spacing
  *
  * @param  {Number}  $size - Value of Tracking in Photoshop's Character Panel
- * @param  {Number}  $base - Value of Font Size in Photosohp's Character Panel
+ * @param  {Number}  $base - Value of Font Size in Photoshop's Character Panel
  */
 @function tracking($size, $base: null) {
     $base: if($base == null, 16, strip-unit($base));

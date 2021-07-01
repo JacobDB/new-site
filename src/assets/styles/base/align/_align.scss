@@ -1,5 +1,7 @@
 // Styles written by __gulp_init_author_name__ @ __gulp_init_author_company__
 
+@use "sass:math";
+
 /* ------------------------------------------------------------------------ *\
  * Alignment
 \* ------------------------------------------------------------------------ */
@@ -8,7 +10,7 @@
     & {
         float: left;
         margin-right: remify(25, 16);
-        max-width: (100% / 3);
+        max-width: math.div(100%, 3);
     }
 }
 
@@ -16,7 +18,7 @@
     & {
         float: right;
         margin-left: remify(25, 16);
-        max-width: (100% / 3);
+        max-width: math.div(100%, 3);
     }
 }
 
