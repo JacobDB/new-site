@@ -5,4 +5,4 @@
 import ScrollHint from "scroll-hint";
 
 // init ScrollHint
-new ScrollHint(".text__table__container");
+new ScrollHint(".text__table__container, .wp-block-table");

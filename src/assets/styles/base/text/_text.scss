@@ -67,8 +67,10 @@
 
 /* table variant */
 
-.text__table__container {
+.text__table__container,
+.wp-block-table {
     & {
+        margin: 0;
         overflow: auto;
         width: 100%;
     }
