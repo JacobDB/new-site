@@ -11,3 +11,9 @@
 @use "scroll-hint/scss/scroll-hint";
 
 // Custom
+
+.scroll-hint-icon-wrap {
+    & {
+        overflow: hidden; // fixes issue with tables that are too short
+    }
+}
