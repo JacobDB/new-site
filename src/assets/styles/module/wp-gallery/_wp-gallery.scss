@@ -4,25 +4,41 @@
  * WP Gallery
 \* ------------------------------------------------------------------------ */
 
-.gallery {
+.wp-block-gallery {
+    & {
+        margin: 0;
+    }
+}
+
+.gallery,
+.blocks-gallery-grid {
     & {
         display: grid;
         grid-gap: remify($column-gap);
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 }
 
 @include larger-than(xs) {
     @for $i from 1 through 9 {
-        .gallery-columns-#{$i} {
+        .gallery-columns-#{$i},
+        .wp-block-gallery.columns-#{$i} > .blocks-gallery-grid {
             grid-template-columns: repeat($i, 1fr);
         }
     }
 }
 
-.gallery-item {
+.gallery-item,
+.blocks-gallery-item {
     & {
         column-span: span 1;
         margin: 0;
+    }
+
+    figure { // stylelint-disable-line
+        margin-bottom: 0 !important;
     }
 
     img { // stylelint-disable-line

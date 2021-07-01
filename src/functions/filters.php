@@ -248,13 +248,17 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
         $unordered_lists = $DOM->getElementsByTagName("ul");
 
         foreach ($unordered_lists as $unordered_list) {
-            $unordered_list->setAttribute("class", "user-content__text text text--list text--list-unordered {$unordered_list->getAttribute("class")}");
+            if (! preg_match("/blocks-gallery-grid/", $unordered_list->getAttribute("class"))) {
+                $unordered_list->setAttribute("class", "user-content__text text text--list text--list-unordered {$unordered_list->getAttribute("class")}");
+            }
         }
 
         $list_items = $DOM->getElementsByTagName("li");
 
         foreach ($list_items as $list_item) {
-            $list_item->setAttribute("class", "text__list-item {$list_item->getAttribute("class")}");
+            if (! preg_match("/blocks-gallery-item/", $list_item->getAttribute("class"))) {
+                $list_item->setAttribute("class", "text__list-item {$list_item->getAttribute("class")}");
+            }
         }
 
         $tables = $DOM->getElementsByTagName("table");
@@ -314,7 +318,9 @@ function __gulp_init_namespace___add_user_content_classes(string $content): stri
         $figures = $DOM->getElementsByTagName("figure");
 
         foreach ($figures as $figure) {
-            $figure->setAttribute("class", "user-content__figure figure {$figure->getAttribute("class")}");
+            if (! preg_match("/wp-block-gallery/", $figure->getAttribute("class"))) {
+               $figure->setAttribute("class", "user-content__figure figure {$figure->getAttribute("class")}");
+            }
         }
 
         $figcaptions = $DOM->getElementsByTagName("figcaption");
@@ -571,9 +577,11 @@ function __gulp_init_namespace___responsive_tables(string $content): string {
         $table_container->setAttribute("class", "user-content__text__table__container text__table__container");
 
         foreach ($tables as $table) {
-            $table_container_clone = $table_container->cloneNode();
-            $table->parentNode->replaceChild($table_container_clone, $table);
-            $table_container_clone->appendChild($table);
+            if (! preg_match("/wp-block-table/", $table->parentNode->getAttribute("class"))) {
+                $table_container_clone = $table_container->cloneNode();
+                $table->parentNode->replaceChild($table_container_clone, $table);
+                $table_container_clone->appendChild($table);
+            }
         }
 
         /**
@@ -630,9 +638,9 @@ function __gulp_init_namespace___lazy_load_images(string $content): string {
 
                 // try to determine height and width programmatically
                 if (! ($height && $width) && ($existing_src || $existing_srcset)) {
-                    $src = $existing_src ? $existing_src : explode(" ", $existing_srcset)[0];
+                    $path = $_SERVER["DOCUMENT_ROOT"] . parse_url($existing_src ? $existing_src : explode(" ", $existing_srcset)[0], PHP_URL_PATH);
 
-                    if ($data = getimagesize($_SERVER["DOCUMENT_ROOT"] . parse_url($src, PHP_URL_PATH))) {
+                    if (file_exists($path) && $data = getimagesize($path)) {
                         $height = $data[1];
                         $width  = $data[0];
                     }
@@ -1025,3 +1033,17 @@ function __gulp_init_namespace___crossorigin_external_stylesheets(string $html, 
     return $html;
 }
 add_filter("style_loader_tag", "__gulp_init_namespace___crossorigin_external_stylesheets", 10, 4);
+
+/**
+ * Override block editor column classes with classes that work with my grid system
+ *
+ * @param string $content
+ * @return string
+ */
+function __gulp_init_namespace___wp_block_columns_transpiler(string $content): string {
+    $content = preg_replace("/(wp-block-columns)/", "$1 row ", $content);
+    $content = preg_replace("/(wp-block-column[^s])/", "$1 col-auto ", $content);
+
+    return $content;
+}
+add_filter("the_content", "__gulp_init_namespace___wp_block_columns_transpiler");
