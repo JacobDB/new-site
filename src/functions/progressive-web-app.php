@@ -278,13 +278,13 @@ function __gulp_init_namespace___construct_manifest(): void {
         ];
 
         foreach ($icon_sizes as $platform => $size) {
-            foreach ($size as $purpose => $names) {
-                foreach ($names as $name) {
-                    $data = __gulp_init_namespace___get_pwa_sizes($platform, $name);
+            foreach ($size as $purpose => $prefixes) {
+                foreach ($prefixes as $prefix) {
+                    $data = __gulp_init_namespace___get_pwa_sizes($platform, $prefix);
 
                     foreach ($data as $details) {
                         $icons[] = [
-                            "src"      => get_theme_file_uri("assets/media/{$platform}/{$name}-icon-{$details["dimensions"][0]}x{$details["dimensions"][1]}.png"),
+                            "src"      => get_theme_file_uri("assets/media/{$platform}/{$prefix}-icon-{$details["dimensions"][0]}x{$details["dimensions"][1]}.png"),
                             "type"     => "image/png",
                             "sizes"    => "{$details["dimensions"][0]}x{$details["dimensions"][1]}",
                             "platform" => $platform,
