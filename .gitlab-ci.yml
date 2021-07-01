@@ -3,7 +3,7 @@ image: jacob9230/linter
 code_quality:
   stage: test
   before_script:
-    - npm install --no-package-lock --no-save --quiet stylelint stylelint-config-standard stylelint-order stylelint-scss
+    - npm install --no-package-lock --no-save --quiet stylelint stylelint-config-standard stylelint-order stylelint-scss postcss
     - node -v
     - npm -v
     - php -v
