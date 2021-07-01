@@ -2,7 +2,7 @@
 
 <?php
 get_extended_template_part("layout", "hero", [
-    "post"  => $post,
+    "post" => $post,
 ]);
 ?>
 
@@ -19,7 +19,7 @@ get_extended_template_part("layout", "hero", [
                             get_extended_template_part("article", "post-full", [
                                 "post"  => $post,
                                 "class" => "content__article",
-                                "meta" => false,
+                                "meta"  => false,
                             ]);
                         }
                     }
