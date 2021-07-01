@@ -984,13 +984,11 @@ function __gulp_init_namespace___alt_tag_notice(): void {
      * Check if ACF images have alt tags
      */
     if (! $missing_alt && function_exists("get_fields") && $acf_fields = get_fields($post->ID)) {
-        foreach ($acf_fields as $field) {
-            if (is_array($field) && isset($field["alt"]) && trim($field["alt"]) === "") {
-                $missing_alt = true; break;
-            } elseif (is_string($field) && ! __gulp_init_namespace___imgs_have_alts($field)) {
+        foreach ($acf_fields as $key => $field) {
+            if (is_string($field) && ! __gulp_init_namespace___imgs_have_alts($field)) {
                 $missing_alt = true; break;
             } elseif (is_array($field)) {
-                // need to figure out a way to identify nested fields (i.e. repeaters)
+                $missing_alt = ! __gulp_init_namespace___acf_imgs_have_alts($field, $key);
             }
         }
     }

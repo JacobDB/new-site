@@ -673,6 +673,29 @@ function __gulp_init_namespace___imgs_have_alts(string $content): bool {
 }
 
 /**
+ * Check if ACF fields have alt values on all images
+ *
+ * @param mixed $value
+ * @param string|null $key
+ * @return boolean
+ */
+function __gulp_init_namespace___acf_imgs_have_alts($value, ?string $key = null): bool {
+    if (is_array($value)) {
+        foreach ($value as $key => $data) {
+            if (! __gulp_init_namespace___acf_imgs_have_alts($data, $key)) {
+                return false; break;
+            }
+        }
+    } elseif ($key === "alt" && is_string($value) && $value === "") {
+        return false;
+    } elseif (is_string($value)) {
+        return __gulp_init_namespace___imgs_have_alts($value);
+    }
+
+    return true;
+}
+
+/**
  * Check whether the current page is the login screen
  *
  * @return boolean

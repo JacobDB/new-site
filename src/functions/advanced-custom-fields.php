@@ -21,22 +21,83 @@ function __gulp_init_namespace___get_field(string $name, $post_id = null) {
     }
 }
 
+/**
+ * Search ACF fields for values, recursively
+ *
+ * @param mixed $field
+ * @param boolean $recursive
+ * @return boolean
+ */
+function wpd_acf_field_has_value($value, bool $recursive = true): bool {
+    if (is_array($value) && $recursive) {
+        foreach ($value as $data) {
+            if (wpd_acf_field_has_value($data)) {
+                return true; break;
+            }
+        }
+    } elseif ($value) {
+        return true;
+    }
+
+    return false;
+}
+
 /* FILTERS */
 
 /**
- * Reformat "address" field to return "false" if all values are empty
+ * Convert phone numbers from objects to arrays, recursively
  *
  * @param mixed $value
- * @param int|string $post_id
+ * @param integer|string $post_id
  * @param array $field
  * @return mixed
  */
-function __gulp_init_namespace___acf_format_value_address($value, $post_id = 0, array $field = []) {
+function __gulp_init_namespace___acf_format_phone_number_value($value, $post_id = 0, array $field = []) {
+    if (is_array($value)) {
+        foreach ($value as $key => $data) {
+            $value[$key] = __gulp_init_namespace___acf_format_phone_number_value($data);
+        }
+    } elseif ($value instanceof Log1x\AcfPhoneNumber\PhoneNumber) {
+        $value = $value->toArray();
+    }
+
+    return $value;
+}
+add_filter("__gulp_init_namespace___acf_format_value", "__gulp_init_namespace___acf_format_phone_number_value", 10, 3);
+
+/**
+ * Filter out badly encoded characters from strings, recursively
+ *
+ * @param  mixed $value
+ * @return mixed
+ */
+function __gulp_init_namespace___acf_remove_broken_characters($value) {
+    if (is_array($value)) {
+        foreach ($value as $key => $data) {
+            $value[$key] = __gulp_init_namespace___acf_remove_broken_characters($data);
+        }
+    } elseif (is_string($value)) {
+        $value = __gulp_init_namespace___remove_broken_characters($value);
+    }
+
+    return $value;
+}
+add_filter("acf/format_value", "__gulp_init_namespace___acf_remove_broken_characters", 10);
+
+/**
+ * Remove empty groups, recursively
+ *
+ * @param mixed $value
+ * @param integer|string $post_id
+ * @param array $field
+ * @return mixed
+ */
+function wpd_acf_format_value_group($value, $post_id = 0, array $field = []) {
     if (is_array($value)) {
         $has_value = false;
 
-        foreach ($value as $name => $data) {
-            if ($data) {
+        foreach ($value as $data) {
+            if (wpd_acf_field_has_value($data)) {
                 $has_value = true; break;
             }
         }
@@ -48,30 +109,42 @@ function __gulp_init_namespace___acf_format_value_address($value, $post_id = 0, 
 
     return $value;
 }
-add_filter("acf/format_value/name=address", "__gulp_init_namespace___acf_format_value_address", 10, 3);
+add_filter("acf/format_value/type=group", "wpd_acf_format_value_group", 10, 3);
 
 /**
- * Convert phone numbers from objects to arrays
+ * Remove empty repeater rows, recursively
  *
  * @param mixed $value
- * @param int|string $post_id
+ * @param integer $post_id
  * @param array $field
  * @return mixed
  */
-function __gulp_init_namespace___acf_format_phone_number_value($value, $post_id = 0, array $field = []) {
-    if ($value instanceof Log1x\AcfPhoneNumber\PhoneNumber) {
-        $value = $value->toArray();
+function wpd_acf_format_value_repeater($value, $post_id = 0, array $field) {
+    if (is_array($value)) {
+        foreach ($value as $key => $row) {
+            $has_value = false;
+
+            foreach ($row as $data) {
+                if (wpd_acf_field_has_value($data)) {
+                    $has_value = true; break;
+                }
+            }
+
+            if (! $has_value) {
+                unset($value[$key]);
+            }
+        }
     }
 
     return $value;
 }
-add_filter("__gulp_init_namespace___acf_format_value", "__gulp_init_namespace___acf_format_phone_number_value", 10, 1);
+add_filter("acf/format_value/type=repeater", "wpd_acf_format_value_repeater", 10, 3);
 
 /**
  * Reformat "social_media" field to contain icons and titles
  *
  * @param mixed $value
- * @param int|string $post_id
+ * @param integer|string $post_id
  * @param array $field
  * @return mixed
  */
@@ -100,23 +173,6 @@ function __gulp_init_namespace___acf_format_value_social_media($value, $post_id 
 add_filter("acf/format_value/name=social_media", "__gulp_init_namespace___acf_format_value_social_media", 10, 3);
 
 /**
- * Filter out badly encoded characters from strings
- *
- * @param  mixed $value
- * @return mixed
- */
-function __gulp_init_namespace___acf_remove_broken_characters($value) {
-    if (is_string($value)) {
-        $value = __gulp_init_namespace___remove_broken_characters($value);
-    } elseif (is_array($value) && isset($value["title"]) && is_string($value["title"])) {
-        $value["title"] = __gulp_init_namespace___remove_broken_characters($value["title"]);
-    }
-
-    return $value;
-}
-add_filter("acf/format_value", "__gulp_init_namespace___acf_remove_broken_characters", 10);
-
-/**
  * Delay when shortcodes get expanded
  *
  * @param  string $value
@@ -131,9 +187,6 @@ add_action("wp", "__gulp_init_namespace___acf_delay_shortcode_expansion");
 
 // add classes to elements
 add_filter("acf_the_content", "__gulp_init_namespace___add_user_content_classes", 20, 1);
-
-// wrap handorgel accordions
-add_filter("acf_the_content", "__gulp_init_namespace___wrap_handorgel_shortcodes", 30, 1);
 
 // enable responsive iframes
 add_filter("acf_the_content", "__gulp_init_namespace___responsive_iframes", 20, 1);
