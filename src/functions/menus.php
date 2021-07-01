@@ -723,7 +723,7 @@ function __gulp_init_namespace___nav_menu_sub_menu(array $menu_items, object $ar
      * Set required values
      */
     $sub_menu["fallback"]  = isset($sub_menu["fallback"])  ? $sub_menu["fallback"]  : "root";
-    $sub_menu["local"]      = isset($sub_menu["local"])      ? $sub_menu["local"]   : false;
+    $sub_menu["local"]     = isset($sub_menu["local"])     ? $sub_menu["local"]     : false;
     $sub_menu["viewed_id"] = isset($sub_menu["viewed_id"]) ? $sub_menu["viewed_id"] : null;
 
     /**
